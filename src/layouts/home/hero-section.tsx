@@ -33,7 +33,7 @@ export default function Hero() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row gap-4 justify-between items-end lg:items-center">
+            <div className="flex flex-col lg:flex-row gap-2 justify-between items-end lg:items-center">
               <div className="flex gap-2">
                 {socials.map(social => (
                   <Link

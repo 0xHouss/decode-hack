@@ -12,8 +12,6 @@ export default function Home() {
       <main className="relative w-full">
         <Hero />
 
-        <div className="absolute -left-10 -right-10 top-120 bottom-10 bg-[url('/neon-background.png')] -z-10" />
-
         <div className="relative">
           <About />
           <VisionMission />
