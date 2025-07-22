@@ -5,7 +5,7 @@ export default function VisionMission() {
     <Section id="vision-mission" className="flex flex-col gap-10 items-center max-w-6xl">
       <h2 className="text-5xl bg-gradient-to-r text-center lg:text-left from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">Our Vision & Mission</h2>
 
-      <div className="flex flex-col lg:flex-row justify-between lg:w-6xl gap-10">
+      <div className="flex flex-col md:flex-row justify-between lg:w-6xl gap-10">
         <div className="p-2 lg:p-7 bg-[url('/container-background.png')] rounded-2xl bg-cover flex-1/2">
           <div className="p-5 lg:p-7 bg-gradient-to-b from-[#0D1C13] to-[#0A160F] shadow-2xl rounded-2xl h-full">
             <h3 className="text-2xl lg:text-3xl">Our Mission</h3>

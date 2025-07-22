@@ -1,38 +1,6 @@
 import Section from "@/components/section";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+import { SponsorCard } from "@/components/sponsor-card";
 import { sponsors } from "@/lib/config";
-import Image from "next/image";
-import Link from "next/link";
-
-export function SponsorCard({ sponsor }: { sponsor: typeof sponsors[0] }) {
-  return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <Link href={sponsor.url} target="_blank" rel="noopener noreferrer">
-          <Image
-            src={sponsor.logo}
-            alt={`Sponsor ${sponsor.name} Logo`}
-            width={200}
-            height={200}
-            className="object-contain"
-          />
-        </Link>
-      </HoverCardTrigger>
-      <HoverCardContent sideOffset={-40} className="w-90">
-        <div className="flex justify-between gap-4">
-          <div className="space-y-1">
-            <h4 className="font-bold">{sponsor.name}</h4>
-            <p className="text-xs">{sponsor.description}</p>
-          </div>
-        </div>
-      </HoverCardContent>
-    </HoverCard>
-  )
-}
 
 export default function Sponsors() {
   return (

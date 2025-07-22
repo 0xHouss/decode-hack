@@ -9,7 +9,7 @@ export default function About() {
       <div className="grid grid-cols-1 lg:grid-cols-2 rounded-lg overflow-clip bg-[#4E941A]/5 backdrop-blur-xs">
         <div className="p-10 flex flex-col items-start gap-8">
           <div className="space-y-4">
-            <h2 className="text-4xl lg:text-5xl bg-gradient-to-r from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">Who are we?</h2>
+            <h2 className="text-4xl md:text-5xl bg-gradient-to-r from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">Who are we?</h2>
 
             <p className=" text-muted-foreground">Section D Info ING: a group of curious minds aiming to build a solid and engaging learning community. It all began with a learning season led by professionals… an initiative to make tech more accessible and inspiring. Now, it’s time for the D-code Hack hackathon</p>
           </div>
@@ -25,13 +25,13 @@ export default function About() {
           </Link>
         </div>
 
-        <div className="mt-0 m-5 lg:mt-5 p-5 rounded-2xl bg-[#073B05]/30">
+        <div className="mt-0 m-5 md:mt-5 p-5 rounded-2xl bg-[#073B05]/30">
           <Image
             src="/section-d-banner.jpg"
             alt="About Us"
             width={500}
             height={300}
-            className="rounded-xl object-cover shadow-xl border border-[#172F21]"
+            className="rounded-xl object-cover shadow-xl w-full border border-[#172F21]"
           />
         </div>
       </div>

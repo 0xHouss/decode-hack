@@ -10,17 +10,17 @@ export default function Footer() {
       <div className="flex flex-col gap-8 lg:flex-row py-8 justify-between border-y border-[#737373]">
         <Image src="/logo.svg" alt="Logo" width={200} height={76} />
 
-        <div className="flex flex-col lg:w-[60%] gap-6">
-          <div className="flex gap-6 lg:gap-15">
-            <div className="flex flex-col gap-2">
+        <div className="flex flex-col lg:w-[60%] gap-8">
+          <div className="flex gap-8 lg:gap-15">
+            <div className="flex flex-col gap-2 flex-1/2">
               <h3 className="font-semibold lg:text-lg">Contact Us</h3>
               <p className="text-sm lg:text-base">sectiond.relations@gmail.com</p>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 flex-1/2">
               <h3 className="font-semibold lg:text-lg">Follow Us</h3>
 
-              <ul className="flex gap-2 justify-between">
+              <ul className="flex gap-4">
                 {socials.map(social => (
                   <Link
                     key={social.name}

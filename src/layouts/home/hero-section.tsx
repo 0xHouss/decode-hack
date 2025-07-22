@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <Section id="home" className="flex flex-col gap-3 md:gap-10 items-center justify-center mt-0 lg:mt-0">
+    <Section id="home" className="flex flex-col gap-3 md:gap-10 items-center justify-center mt-0 md:mt-0">
       <div>
         <h1 className="text-5xl md:text-8xl flex gap-4">
           <span className="bg-gradient-to-b bg-clip-text text-transparent from-[#E3E812] to-[#E9FDB0]/50">Decode</span>
@@ -17,7 +17,7 @@ export default function Hero() {
 
       <div className="bg-gradient-to-b from-[#4E941A] to-[#073B05] p-px rounded-xl">
         <div className="bg-background rounded-xl">
-          <div className="relative lg:max-w-3xl rounded-lg bg-[#073B05]/20 p-2 space-y-2">
+          <div className="relative md:max-w-3xl rounded-lg bg-[#073B05]/20 p-2 space-y-2">
             <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[400px] h-[80px] bg-[#D8FEE5]/20 rounded-full blur-[100px] z-0" />
 
             <div className="rounded-lg border overflow-hidden  border-[#4E941A] bg-[#06020D]">
@@ -33,7 +33,7 @@ export default function Hero() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row gap-2 justify-between items-end lg:items-center">
+            <div className="flex flex-col md:flex-row gap-2 justify-between items-end md:items-center">
               <div className="flex gap-2">
                 {socials.map(social => (
                   <Link
