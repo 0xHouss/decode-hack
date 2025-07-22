@@ -27,7 +27,7 @@ export function DatePicker({ value, onChange }: DatePickerProps) {
         value={value}
         placeholder="Date of Birth"
         readOnly
-        className="h-12 rounded-2xl border-0 dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
+        className="h-12 rounded-2xl border-0 bg-[#050B08] dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
         onClick={() => setOpen(true)}
         onKeyDown={(e) => {
           if (e.key === "ArrowDown" || e.key === "Enter") {

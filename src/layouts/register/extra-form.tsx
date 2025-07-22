@@ -111,7 +111,7 @@ export default function ExtraForm() {
   return (
     <Form {...form}>
       <form onSubmit={handleSubmit} className="flex flex-col gap-8 items-end">
-        <div className="space-y-6 min-w-[450px]">
+        <div className="space-y-6 md:min-w-[450px]">
           <FormField
             control={form.control}
             name="motivation"
@@ -148,7 +148,7 @@ export default function ExtraForm() {
                 name={platform.name}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#F0FFD1]">{platform.name.charAt(0).toUpperCase() + platform.name.slice(1)}</FormLabel>
+                    <FormLabel className="text-[#F0FFD1]">{platform.name.charAt(0).toUpperCase() + platform.name.slice(1)} (optional)</FormLabel>
                     <FormControl>
                       <CustomInput icon={platform.icon} placeholder={`Your ${platform.name.charAt(0).toUpperCase() + platform.name.slice(1)} URL`} {...field} />
                     </FormControl>

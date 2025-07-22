@@ -6,7 +6,7 @@ function CustomInput({ className, type, icon, ...props }: React.ComponentProps<"
     <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
       <Input
         type={type}
-        className={cn("h-12 rounded-2xl border-0 dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50", className)}
+        className={cn("h-12 rounded-2xl border-0 bg-[#050B08] dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50", className)}
         {...props}
       />
 

@@ -60,7 +60,7 @@ export default function HackathonForm() {
   return (
     <Form {...form}>
       <form onSubmit={handleSubmit} className="flex flex-col gap-8 items-end">
-        <div className="space-y-6 min-w-[450px]">
+        <div className="space-y-6 md:min-w-[450px]">
           <FormField
             control={form.control}
             name="teamName"
@@ -81,7 +81,7 @@ export default function HackathonForm() {
             render={({ field }) => (
               <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
                 <FormItem className="space-y-2 bg-[#050B08] p-4 rounded-2xl">
-                  <FormLabel className="text-[#F0FFD1]">Will you be available during the days of the hackathon?</FormLabel>
+                  <FormLabel className="text-[#F0FFD1] text-wrap">Will you be available during the days of the hackathon?</FormLabel>
                   <FormControl>
                     <RadioGroup {...field} onValueChange={(value) => field.onChange(value)} className="flex flex-col space-y-2">
                       <div className="flex items-center space-x-2">
@@ -110,7 +110,7 @@ export default function HackathonForm() {
             render={({ field }) => (
               <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
                 <FormItem className="space-y-2 bg-[#050B08] p-4 rounded-2xl">
-                  <FormLabel className="text-[#F0FFD1]">Do you have any experience in hackathons?</FormLabel>
+                  <FormLabel className="text-[#F0FFD1] text-wrap">Do you have any experience in hackathons?</FormLabel>
                   <FormControl>
                     <RadioGroup {...field} onValueChange={(value) => field.onChange(value)} className="flex flex-col space-y-2">
                       <div className="flex items-center space-x-2">
@@ -138,7 +138,7 @@ export default function HackathonForm() {
                   <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
                     <Textarea
                       placeholder="If yes, which ones?"
-                      className="rounded-2xl border-0 dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
+                      className="rounded-2xl border-0 bg-[#050B08] dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
                       {...field} />
                   </div>
                 </FormControl>

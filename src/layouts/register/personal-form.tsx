@@ -54,8 +54,6 @@ export default function PersonalForm() {
     })
   }, [store.rehydrated, form])
 
-  console.log(store)
-
   return (
     <Form {...form}>
       <form onSubmit={handleSubmit} className="flex flex-col gap-8 items-end">

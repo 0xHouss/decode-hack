@@ -54,7 +54,7 @@ export default function AcademicForm() {
   return (
     <Form {...form}>
       <form onSubmit={handleSubmit} className="flex flex-col gap-8 items-end">
-        <div className="grid grid-cols-1 gap-6 min-w-[450px]">
+        <div className="space-y-6 md:min-w-[450px]">
           <FormField
             control={form.control}
             name="institution"

@@ -36,8 +36,8 @@ export default function Countdown({ className }: CondownProps) {
 
   return (
     <div className={cn("space-y-4", className)}>
-      <h2 className="hidden lg:block text-2xl bg-gradient-to-r from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">
-        Registration ends in :
+      <h2 className="text-2xl bg-gradient-to-r from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">
+        Registrations ends in :
       </h2>
 
       <p className="text-5xl font-bold tracking-widest text-muted-foreground" suppressHydrationWarning>
@@ -49,10 +49,6 @@ export default function Countdown({ className }: CondownProps) {
           )}:${pad(timeLeft.seconds)}`
         )}
       </p>
-
-      <h2 className="lg:hidden text-center text-lg bg-gradient-to-r from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">
-        left before registration ends
-      </h2>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import Countdown from "@/components/countdown";
 import About from "@/layouts/home/about-section";
 import FAQ from "@/layouts/home/FAQ-section";
 import Footer from "@/layouts/home/footer";
@@ -11,6 +12,10 @@ export default function Home() {
     <>
       <main className="relative w-full">
         <Hero />
+
+        <div className="text-center w-full">
+          <Countdown className="" />
+        </div>
 
         <div className="relative">
           <About />

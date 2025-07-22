@@ -11,16 +11,16 @@ export default function Footer() {
         <Image src="/logo.svg" alt="Logo" width={200} height={76} />
 
         <div className="flex flex-col lg:w-[60%] gap-8">
-          <div className="flex gap-8 lg:gap-15">
-            <div className="flex flex-col gap-2 flex-1/2">
+          <div className="flex justify-between gap-4 lg:gap-15 flex-wrap">
+            <div className="flex flex-col gap-2">
               <h3 className="font-semibold lg:text-lg">Contact Us</h3>
-              <p className="text-sm lg:text-base">sectiond.relations@gmail.com</p>
+              <Link href="mailto:sectiond.relations@gmail.com" target="_blank" className="text-sm lg:text-base">sectiond.relations@gmail.com</Link>
             </div>
 
-            <div className="flex flex-col gap-2 flex-1/2">
-              <h3 className="font-semibold lg:text-lg">Follow Us</h3>
+            <div className="flex flex-col gap-2 lg:flex-1/2">
+              <h3 className="font-semibold md:text-lg">Follow Us</h3>
 
-              <ul className="flex gap-4">
+              <ul className="flex gap-3">
                 {socials.map(social => (
                   <Link
                     key={social.name}
@@ -49,8 +49,7 @@ export default function Footer() {
                 >
                   {section.title}
                 </Link>
-              )
-              )}
+              ))}
             </ul>
           </div>
         </div>
