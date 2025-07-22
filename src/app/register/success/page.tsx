@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function RegistrationSuccessPage() {
   return (
-    <div className="flex flex-col gap-3 items-center absolute top-1/2 left-1/2 -translate-1/2">
+    <div className="flex flex-col gap-3 items-center">
       <div>
         <h1 className="text-3xl text-nowrap lg:text-5xl flex gap-4 bg-gradient-to-b bg-clip-text pb-2 text-transparent from-[#E3E812] to-[#E9FDB0]/50">
           Registration Successful!
