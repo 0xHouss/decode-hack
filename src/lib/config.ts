@@ -40,3 +40,5 @@ export const sections = [
     href: "/#faq"
   },
 ]
+
+export const registrationEndDate = new Date("2025-07-27T19:00:00Z"); // Set your target date here
