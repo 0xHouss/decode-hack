@@ -8,52 +8,53 @@ import { formatDate } from "./utils";
 export async function submitRegistrationForm(
   data: RegistrationState
 ) {
-  const validatedData = registrationSchema.parse(data);
+  try {
+    const validatedData = registrationSchema.parse(data);
 
-  const {
-    firstName,
-    lastName,
-    email,
-    phone,
-    birthDate,
-    NIN,
-    enrollmentYear,
-    institution,
-    matricule,
-    major,
-    teamName,
-    availability,
-    prevExperience,
-    prevExperienceDetails,
-    motivation,
-    skills,
-    github,
-    linkedin,
-    portfolio,
-    kaggle
-  } = validatedData;
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      birthDate,
+      NIN,
+      enrollmentYear,
+      institution,
+      matricule,
+      major,
+      teamName,
+      availability,
+      prevExperience,
+      prevExperienceDetails,
+      motivation,
+      skills,
+      github,
+      linkedin,
+      portfolio,
+      kaggle
+    } = validatedData;
 
-  if (!process.env.DISCORD_WEBHOOK_URL)
-    throw new Error("Discord webhook URL is not set.");
+    if (!process.env.DISCORD_WEBHOOK_URL)
+      throw new Error("Discord webhook URL is not set.");
 
-  await prisma.submission.create({
-    data: {
-      ...validatedData,
-      birthDate: formatDate(birthDate),
-    },
-  });
+    await prisma.submission.create({
+      data: {
+        ...validatedData,
+        birthDate: formatDate(birthDate),
+      },
+    });
 
-  await fetch(process.env.DISCORD_WEBHOOK_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      embeds: [
-        {
-          title: "New Registration Form Submission",
-          color: 3447003,
-          description: `
+    await fetch(process.env.DISCORD_WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        embeds: [
+          {
+            title: "New Registration Form Submission",
+            color: 3447003,
+            description: `
 ### 👤 Personal Information
 - **First Name:** ${firstName}
 - **Last Name:** ${lastName}
@@ -82,9 +83,13 @@ export async function submitRegistrationForm(
 - **Portfolio:** ${portfolio || "N/A"}
 - **Kaggle:** ${kaggle || "N/A"}
     `.trim(),
-          timestamp: new Date().toISOString(),
-        }
-      ],
-    }),
-  });
+            timestamp: new Date().toISOString(),
+          }
+        ],
+      }),
+    });
+  } catch (error) {
+    console.error("Error submitting registration form:", error);
+    throw error
+  }
 }

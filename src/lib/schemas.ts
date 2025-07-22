@@ -25,10 +25,10 @@ export const registrationSchema = z.object({
   prevExperienceDetails: z.string(),
   motivation: z.string().min(1, "Motivation is required"),
   skills: z.string().min(1, "Skills are required"),
-  github: z.url("Invalid GitHub URL").or(z.literal("")),
-  linkedin: z.url("Invalid LinkedIn URL").or(z.literal("")),
-  portfolio: z.url("Invalid portfolio URL").or(z.literal("")),
-  kaggle: z.url("Invalid Kaggle URL").or(z.literal("")),
+  github: z.string(),
+  linkedin: z.string(),
+  portfolio: z.string(),
+  kaggle: z.string(),
 })
 
 export type RegistrationSchema = z.infer<typeof registrationSchema>
