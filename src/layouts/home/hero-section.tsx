@@ -6,9 +6,9 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <Section id="home" className="flex flex-col gap-10 items-center justify-center mt-0">
+    <Section id="home" className="flex flex-col gap-3 md:gap-10 items-center justify-center mt-0 lg:mt-0">
       <div>
-        <h1 className="text-5xl lg:text-8xl flex gap-4">
+        <h1 className="text-5xl md:text-8xl flex gap-4">
           <span className="bg-gradient-to-b bg-clip-text text-transparent from-[#E3E812] to-[#E9FDB0]/50">Decode</span>
           <span className="bg-gradient-to-b bg-clip-text text-transparent from-[#E9FDB0] to-[#E9FDB0]/40">Hack</span>
         </h1>

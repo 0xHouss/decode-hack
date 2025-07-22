@@ -47,7 +47,7 @@ export default function RootLayout({
           />
 
           <div className="absolute top-0 left-0 right-0 h-screen overflow-clip">
-            <div className="absolute top-45 rounded-t-full left-1/2 -translate-x-1/2 w-[150svw] lg:w-[130svw] h-[130svh] bg-gradient-to-r from-[#5D9535]/0 via-[#C3E956] to-[#5D9535]/0  pt-[2px]">
+            <div className="absolute top-35 lg:top-45 rounded-t-full left-1/2 -translate-x-1/2 w-[150svw] lg:w-[130svw] h-[130svh] bg-gradient-to-r from-[#5D9535]/0 via-[#C3E956] to-[#5D9535]/0  pt-[2px]">
               <div className="relative bg-background rounded-t-full w-full h-full overflow-hidden">
                 <div className="absolute left-0 right-0 top-0 bottom-0 rounded-t-full bg-gradient-to-b from-[#4E941A]/50 via-background to-background" />
               </div>
@@ -55,7 +55,7 @@ export default function RootLayout({
             </div>
           </div>
 
-          <div className="mt-75 lg:mt-50 z-20">
+          <div className="absolute top-[30svh] md:top-[30svw] lg:top-[20svw] z-20">
             {children}
           </div>
         </Providers>

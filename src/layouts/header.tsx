@@ -18,12 +18,9 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-8 left-5 right-5 lg:w-full lg:left-1/2 lg:-translate-x-1/2 rounded-full bg-gradient-to-r from-[#C3E956]/80 to-[#C3E956]/30 lg:max-w-6xl p-px z-10">
+    <header className="absolute top-8 left-3 right-3 lg:w-full lg:left-1/2 lg:-translate-x-1/2 rounded-full bg-gradient-to-r from-[#C3E956]/80 to-[#C3E956]/30 lg:max-w-6xl p-px z-10">
       <div className="bg-background rounded-full">
         <nav className="relative flex justify-between items-center bg-[#C3E95626] rounded-full m-auto p-2 lg:p-4">
-          <Button className="lg:hidden" onClick={() => setOpen(true)} variant="ghost" size="icon">
-            <Menu className="size-7 text-[#E3E812]" />
-          </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetContent className="overflow-y-auto">
               <SheetHeader>
@@ -35,6 +32,7 @@ export default function Header() {
                       width={150}
                       height={50}
                       className="h-8 w-auto object-contain"
+                      onClick={() => setOpen(false)}
                     />
                   </Link>
                 </SheetTitle>
@@ -46,7 +44,7 @@ export default function Header() {
                       key={section.title}
                       href={section.href}
                       className="text-lg"
-                      onClick={() => setTimeout(() => setOpen(false), 1000)} // Close the sheet after clicking a link
+                      onClick={() => setOpen(false)}
                     >
                       {section.title}
                     </Link>
@@ -55,7 +53,11 @@ export default function Header() {
 
                 <div className="flex flex-col gap-3">
                   <div className="flex bg-gradient-to-br from-[#C3E956]/80 to-[#C3E956]/30 rounded-full p-px">
-                    <Link href="/register/personal" className="text-sm rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 p-3 w-full text-center">
+                    <Link
+                      href="/register/personal"
+                      className="text-sm rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 p-3 w-full text-center"
+                      onClick={() => setOpen(false)}
+                    >
                       Register now
                     </Link>
                   </div>
@@ -64,7 +66,7 @@ export default function Header() {
             </SheetContent>
           </Sheet>
 
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 lg:relative lg:translate-0 lg:left-0">
+          <Link href="/" className="px-2">
             <Image
               src="/logo.svg"
               alt="Logo"
@@ -86,11 +88,18 @@ export default function Header() {
             ))}
           </div>
 
-          <div className="flex bg-gradient-to-br from-[#C3E956]/80 to-[#C3E956]/30 rounded-full p-px">
-            <Link href="/register/personal" className="text-xs lg:text-base rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 py-2 px-4">
+          <div className="hidden lg:flex bg-gradient-to-br from-[#C3E956]/80 to-[#C3E956]/30 rounded-full p-px">
+            <Link
+              href="/register/personal"
+              className="text-xs lg:text-base rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 py-2 px-4"
+            >
               Register now
             </Link>
           </div>
+
+          <Button className="lg:hidden" onClick={() => setOpen(true)} variant="ghost" size="icon">
+            <Menu className="size-7 text-[#E3E812]" />
+          </Button>
         </nav>
       </div>
     </header>
