@@ -46,7 +46,6 @@ export default function ExtraForm() {
     },
     onError: (err) => {
       setError(err instanceof Error ? err.message : String(err));
-      alert("An error occurred while submitting the form. Please try again later.");
     },
   })
 
