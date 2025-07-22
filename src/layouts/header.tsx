@@ -1,18 +1,17 @@
 "use client";
 
-import { sections } from "@/lib/config"
-import Image from "next/image"
-import Link from "next/link"
-import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle,
-  SheetTrigger,
+  SheetTitle
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+import { sections } from "@/lib/config";
 import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);

@@ -30,7 +30,7 @@ export default function Countdown({ className }: CondownProps) {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [registrationEndDate]);
+  }, []);
 
   const pad = (n: number) => n.toString().padStart(2, "0");
 

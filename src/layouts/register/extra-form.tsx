@@ -1,6 +1,7 @@
 "use client"
 
 import { CustomInput } from "@/components/custom-input"
+import { FormError } from "@/components/form-error"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import useControlledForm from "@/hooks/use-controlled-form"
@@ -12,6 +13,7 @@ import { useMutation } from "@tanstack/react-query"
 import { BriefcaseBusinessIcon, ChevronLeftIcon, FlameIcon, HammerIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { Github, Linkedin } from "react-bootstrap-icons"
 
 const formSchema = registrationSchema.pick({
@@ -34,6 +36,8 @@ export default function ExtraForm() {
   const router = useRouter()
   const store = useRegistrationStore()
 
+  const [error, setError] = useState("")
+
   const { mutate, isPending } = useMutation({
     mutationFn: () => submitRegistrationForm(store),
     onSuccess: () => {
@@ -41,7 +45,7 @@ export default function ExtraForm() {
       router.push("/register/success")
     },
     onError: (err) => {
-      console.error(err);
+      setError(err instanceof Error ? err.message : String(err));
       alert("An error occurred while submitting the form. Please try again later.");
     },
   })
@@ -113,6 +117,8 @@ export default function ExtraForm() {
               />
             ))}
           </div>
+
+          <FormError error={error} />
         </div>
 
         <div className="flex justify-between w-full">
