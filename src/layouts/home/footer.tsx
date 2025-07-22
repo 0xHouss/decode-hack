@@ -6,7 +6,7 @@ import { SocialIcon } from "react-social-icons";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col p-6 lg:p-0 max-w-6xl w-full m-auto mb-8 gap-4">
+    <footer className="flex w-screen flex-col p-6 lg:p-0 max-w-6xl m-auto mb-8 gap-4">
       <div className="flex flex-col gap-8 lg:flex-row py-8 justify-between border-y border-[#737373]">
         <Image src="/logo.svg" alt="Logo" width={200} height={76} />
 
