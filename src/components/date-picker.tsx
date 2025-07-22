@@ -7,36 +7,30 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { formatDate, parseDate } from "@/lib/utils"
 import { CalendarIcon } from "lucide-react"
-import * as React from "react"
-
-function formatDate(date: Date | undefined) {
-  if (!date) return ""
-  const day = date.getDate().toString().padStart(2, "0")
-  const month = date.toLocaleString("en-US", { month: "long" })
-  const year = date.getFullYear()
-  return `${day} ${month} ${year}` // dd Month yyyy
-}
+import React from "react"
 
 interface DatePickerProps {
-  value: Date | undefined
-  onChange: (date: Date) => void
+  value: string
+  onChange: (date: string) => void
 }
 
 export function DatePicker({ value, onChange }: DatePickerProps) {
   const [open, setOpen] = React.useState(false)
-  const [month, setMonth] = React.useState<Date | undefined>(value)
+  const [month, setMonth] = React.useState<Date | undefined>(value ? parseDate(value) : undefined)
+  const [localValue, setLocalValue] = React.useState<Date | undefined>(value ? parseDate(value) : undefined)
 
   return (
     <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
       <Input
-        value={formatDate(value)}
+        value={value}
         placeholder="Date of Birth"
         readOnly
         className="h-12 rounded-2xl border-0 dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
         onClick={() => setOpen(true)}
         onKeyDown={(e) => {
-          if (e.key === "ArrowDown") {
+          if (e.key === "ArrowDown" || e.key === "Enter") {
             e.preventDefault()
             setOpen(true)
           }
@@ -54,13 +48,14 @@ export function DatePicker({ value, onChange }: DatePickerProps) {
         >
           <Calendar
             mode="single"
-            selected={value}
+            selected={localValue}
             captionLayout="dropdown"
             month={month}
             onMonthChange={setMonth}
             onSelect={(date) => {
               if (!date) return
-              onChange(date)      // ✅ Tell RHF about the change
+              setLocalValue(date)
+              onChange(formatDate(date))
               setOpen(false)
             }}
           />

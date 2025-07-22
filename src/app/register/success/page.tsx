@@ -1,8 +1,18 @@
+"use client";
+
 import { Separator } from "@/components/ui/separator";
+import { useRegistrationStore } from "@/lib/store";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function RegistrationSuccessPage() {
+  const store = useRegistrationStore()
+
+  useEffect(() => {
+    store.clearData()
+  }, []);
+
   return (
     <div className="flex flex-col gap-3 items-center">
       <div>

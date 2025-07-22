@@ -13,7 +13,7 @@ import { useMutation } from "@tanstack/react-query"
 import { BriefcaseBusinessIcon, ChevronLeftIcon, FlameIcon, HammerIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Github, Linkedin } from "react-bootstrap-icons"
 
 const formSchema = registrationSchema.pick({
@@ -39,9 +39,29 @@ export default function ExtraForm() {
   const [error, setError] = useState("")
 
   const { mutate, isPending } = useMutation({
-    mutationFn: () => submitRegistrationForm(store),
+    mutationFn: () => submitRegistrationForm({
+      firstName: store.firstName!,
+      lastName: store.lastName!,
+      email: store.email!,
+      phone: store.phone!,
+      birthDate: store.birthDate!,
+      NIN: store.NIN!,
+      enrollmentYear: store.enrollmentYear!,
+      institution: store.institution!,
+      matricule: store.matricule!,
+      major: store.major!,
+      teamName: store.teamName!,
+      availability: store.availability!,
+      prevExperience: store.prevExperience!,
+      prevExperienceDetails: store.prevExperienceDetails!,
+      motivation: store.motivation!,
+      skills: store.skills!,
+      github: store.github!,
+      linkedin: store.linkedin!,
+      portfolio: store.portfolio!,
+      kaggle: store.kaggle!,
+    }),
     onSuccess: () => {
-      store.clearData()
       router.push("/register/success")
     },
     onError: (err) => {
@@ -60,11 +80,33 @@ export default function ExtraForm() {
       kaggle: store.kaggle,
     },
     onSubmit: (values) => {
-      store.setData(values)
-
+      store.setState(values)
       mutate()
     },
   })
+
+  useEffect(() => {
+    if (!store.rehydrated) return;
+
+    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.NIN)
+      router.push("/register/personal");
+
+    if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major)
+      router.push("/register/academic");
+
+    if (!store.teamName || !store.availability || !store.prevExperience)
+      router.push("/register/hackathon");
+
+    form.reset({
+      motivation: store.motivation,
+      skills: store.skills,
+      github: store.github,
+      linkedin: store.linkedin,
+      portfolio: store.portfolio,
+      kaggle: store.kaggle,
+    })
+  }, [store, form])
+
 
   return (
     <Form {...form}>

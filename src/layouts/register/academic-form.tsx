@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, GraduationCapIcon, HashIcon, SchoolIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 const formSchema = registrationSchema.pick({
   enrollmentYear: true,
@@ -30,11 +31,25 @@ export default function AcademicForm() {
       institution: store.institution,
       major: store.major,
     },
-    onSubmit: async (values) => {
-      store.setData(values)
+    onSubmit: (values) => {
+      store.setState(values)
       router.push("/register/hackathon")
     },
   })
+
+  useEffect(() => {
+    if (!store.rehydrated) return;
+
+    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.NIN)
+      router.push("/register/personal");
+
+    form.reset({
+      enrollmentYear: store.enrollmentYear,
+      matricule: store.matricule,
+      institution: store.institution,
+      major: store.major,
+    })
+  }, [store, form])
 
   return (
     <Form {...form}>

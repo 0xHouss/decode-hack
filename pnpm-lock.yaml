@@ -80,6 +80,9 @@ importers:
       zustand:
         specifier: ^5.0.6
         version: 5.0.6(@types/react@19.1.8)(react@19.1.0)
+      zustand-rhf-sync:
+        specifier: ^0.0.9
+        version: 0.0.9(@types/react@19.1.8)(react-hook-form@7.60.0(react@19.1.0))(react@19.1.0)(zustand@5.0.6(@types/react@19.1.8)(react@19.1.0))
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -2373,6 +2376,17 @@ packages:
 
   zod@4.0.5:
     resolution: {integrity: sha512-/5UuuRPStvHXu7RS+gmvRf4NXrNxpSllGwDnCBcJZtQsKrviYXm54yDGV2KYNLT5kq0lHGcl7lqWJLgSaG+tgA==}
+
+  zustand-rhf-sync@0.0.9:
+    resolution: {integrity: sha512-eudwgPSVfxf5KQXHFpc/HTho1ufRXVzgsqpue+1oFVugVMH6FzrcuPnPb7mVErja+M8SPFIXrjqkK9n9c4aQzQ==}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      react: '>=16.8'
+      react-hook-form: ^7.31.1
+      zustand: ^4.3.6
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   zustand@5.0.6:
     resolution: {integrity: sha512-ihAqNeUVhe0MAD+X8M5UzqyZ9k3FFZLBTtqo6JLPwV53cbRB/mJwBI0PxcIgqhBBHlEs8G45OTDTMq3gNcLq3A==}
@@ -4820,6 +4834,14 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   zod@4.0.5: {}
+
+  zustand-rhf-sync@0.0.9(@types/react@19.1.8)(react-hook-form@7.60.0(react@19.1.0))(react@19.1.0)(zustand@5.0.6(@types/react@19.1.8)(react@19.1.0)):
+    dependencies:
+      react: 19.1.0
+      react-hook-form: 7.60.0(react@19.1.0)
+      zustand: 5.0.6(@types/react@19.1.8)(react@19.1.0)
+    optionalDependencies:
+      '@types/react': 19.1.8
 
   zustand@5.0.6(@types/react@19.1.8)(react@19.1.0):
     optionalDependencies:

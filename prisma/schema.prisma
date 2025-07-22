@@ -24,7 +24,7 @@ model Submission {
   birthDate String
   NIN       String
 
-  enrollmentYear Int
+  enrollmentYear String
   institution    String
   matricule      String
   major          String

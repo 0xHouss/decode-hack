@@ -8,7 +8,9 @@ export const formatDate = (date: Date) => date.toLocaleString("fr-DZ", {
   day: "2-digit",
   month: "2-digit",
   year: "numeric",
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false
 })
+
+export const parseDate = (date: string) => {
+  const [day, month, year] = date.split("/").map(Number);
+  return new Date(year, month - 1, day);
+};

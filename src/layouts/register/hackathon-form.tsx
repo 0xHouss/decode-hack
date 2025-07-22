@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils"
 import { ChevronLeftIcon, ChevronRightIcon, UsersIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 const formSchema = registrationSchema.pick({
   teamName: true,
@@ -33,11 +34,28 @@ export default function HackathonForm() {
       prevExperience: store.prevExperience,
       prevExperienceDetails: store.prevExperienceDetails,
     },
-    onSubmit: async (values) => {
-      store.setData(values)
+    onSubmit: (values) => {
+      store.setState(values)
       router.push("/register/extra")
     },
   })
+
+  useEffect(() => {
+    if (!store.rehydrated) return;
+
+    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.NIN)
+      router.push("/register/personal");
+
+    if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major)
+      router.push("/register/academic");
+
+    form.reset({
+      teamName: store.teamName,
+      availability: store.availability,
+      prevExperience: store.prevExperience,
+      prevExperienceDetails: store.prevExperienceDetails,
+    })
+  }, [store, form])
 
   return (
     <Form {...form}>

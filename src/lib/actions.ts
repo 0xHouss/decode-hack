@@ -1,12 +1,11 @@
 "use server";
 
+import z from "zod";
 import { prisma } from "./prisma";
 import { registrationSchema } from "./schemas";
-import { RegistrationState } from "./store";
-import { formatDate } from "./utils";
 
 export async function submitRegistrationForm(
-  data: RegistrationState
+  data: z.infer<typeof registrationSchema>
 ) {
   try {
     const validatedData = registrationSchema.parse(data);
@@ -38,10 +37,7 @@ export async function submitRegistrationForm(
       throw new Error("Discord webhook URL is not set.");
 
     await prisma.submission.create({
-      data: {
-        ...validatedData,
-        birthDate: formatDate(birthDate),
-      },
+      data: validatedData,
     });
 
     await fetch(process.env.DISCORD_WEBHOOK_URL, {
@@ -60,7 +56,7 @@ export async function submitRegistrationForm(
 - **Last Name:** ${lastName}
 - **Email:** ${email}
 - **Phone:** ${phone}
-- **Birth Date:** ${formatDate(birthDate)}
+- **Birth Date:** ${birthDate}
 - **NIN:** ${NIN}
 
 ### 🎓 Academic Information

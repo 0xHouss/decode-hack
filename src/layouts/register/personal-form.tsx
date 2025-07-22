@@ -9,6 +9,7 @@ import { registrationSchema } from "@/lib/schemas"
 import { useRegistrationStore } from "@/lib/store"
 import { ChevronRightIcon, IdCardIcon, MailIcon, PhoneIcon, UserIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 const formSchema = registrationSchema.pick({
   firstName: true,
@@ -34,11 +35,26 @@ export default function PersonalForm() {
       birthDate: store.birthDate,
       NIN: store.NIN,
     },
-    onSubmit: async (values) => {
-      store.setData(values)
+    onSubmit: (values) => {
+      store.setState(values)
       router.push("/register/academic")
     },
   })
+
+  useEffect(() => {
+    if (!store.rehydrated) return;
+
+    form.reset({
+      firstName: store.firstName,
+      lastName: store.lastName,
+      email: store.email,
+      phone: store.phone,
+      birthDate: store.birthDate,
+      NIN: store.NIN,
+    })
+  }, [store.rehydrated, form])
+
+  console.log(store)
 
   return (
     <Form {...form}>

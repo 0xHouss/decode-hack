@@ -1,21 +1,31 @@
-import { date, email, z } from "zod"
+import { z } from "zod"
+import { parseDate } from "./utils"
+
+const today = new Date()
+const currentYear = today.getFullYear()
 
 export const registrationSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  email: email("Invalid email address"),
+  email: z.email("Invalid email address"),
   phone: z.string().min(1, "Phone number is required"),
-  birthDate: date("Birth date must be a valid date").refine(date => date <= new Date(), {
-    message: "Birth date must be in the past"
-  }),
+  birthDate: z
+    .string()
+    .refine((val) => parseDate(val), {
+      message: "Must be a valid date",
+    })
+    .refine((val) => parseDate(val) < today, {
+      message: "Must be in the past",
+    }),
   NIN: z.string().min(1, "National ID number is required"),
-  enrollmentYear: z.preprocess(
-    (val) => (val !== '' ? Number(val) : undefined),
-    z
-      .number({ error: "Enrollment year must be a number" })
-      .int()
-      .max(new Date().getFullYear(), { message: "Year mustn't be in the future" })
-  ),
+  enrollmentYear: z
+    .string()
+    .refine((val) => !isNaN(Number(val)), {
+      message: "Must be a valid year",
+    })
+    .refine((val) => Number(val) <= currentYear, {
+      message: `Must be in the past`,
+    }),
   institution: z.string().min(1, "Institution is required"),
   matricule: z.string().min(1, "Matricule is required"),
   major: z.string().min(1, "Major is required"),
