@@ -1,3 +1,4 @@
+import { BadgeInfoIcon, HandHeartIcon, HandshakeIcon, HomeIcon, MessageCircleQuestionIcon } from "lucide-react";
 import { Discord, Instagram, Tiktok } from "react-bootstrap-icons"
 
 export const socials = [
@@ -21,23 +22,28 @@ export const socials = [
 export const sections = [
   {
     title: "Home",
-    href: "/#home"
+    href: "/#home",
+    icon: HomeIcon,
   },
   {
     title: "About",
-    href: "/#about"
+    href: "/#about",
+    icon: BadgeInfoIcon
   },
   {
     title: "Vision & Mission",
-    href: "/#vision-mission"
+    href: "/#vision-mission",
+    icon: HandHeartIcon,
   },
   {
     title: "Sponsors",
-    href: "/#sponsors"
+    href: "/#sponsors",
+    icon: HandshakeIcon
   },
   {
     title: "FAQ",
-    href: "/#faq"
+    href: "/#faq",
+    icon: MessageCircleQuestionIcon,
   },
 ]
 

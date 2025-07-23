@@ -16,7 +16,7 @@ export default function VisionMission() {
         </div>
 
         <div className="p-2 lg:p-7 bg-[url('/container-background.png')] rounded-2xl bg-cover flex-1/2">
-          <div className="relative overflow-clip p-5 lg:p-7 bg-gradient-to-b aspect-video from-[#0D1C13] to-[#0A160F] shadow-2xl rounded-2xl">
+          <div className="relative overflow-clip p-5 lg:p-7 bg-gradient-to-b from-[#0D1C13] to-[#0A160F] shadow-2xl rounded-2xl">
             <h3 className="text-2xl lg:text-3xl">Our Vision</h3>
             <p className="text-muted-foreground mt-2 lg:mt-4 max-w-4/7 lg:max-w-2/3 text-xs lg:text-base z-30">
               To become an entry point for aspiring tech enthusiasts, where learning, innovation, and community come together to spark impactful ideas and build a generation of changemakers using technology for good.

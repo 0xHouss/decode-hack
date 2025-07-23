@@ -9,7 +9,7 @@ import {
 const queryClient = new QueryClient()
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  useCenteredScroll()
+  // useCenteredScroll()
 
   return (
     <QueryClientProvider client={queryClient}>
