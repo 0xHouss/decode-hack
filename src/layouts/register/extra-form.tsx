@@ -14,7 +14,7 @@ import { BriefcaseBusinessIcon, ChevronLeftIcon, FlameIcon, HammerIcon } from "l
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { Github, Linkedin } from "react-bootstrap-icons"
+import { Behance, Github, Linkedin } from "react-bootstrap-icons"
 
 const formSchema = registrationSchema.pick({
   motivation: true,
@@ -22,14 +22,14 @@ const formSchema = registrationSchema.pick({
   github: true,
   linkedin: true,
   portfolio: true,
-  kaggle: true,
+  behance: true,
 })
 
 const platforms = [
   { name: "github", icon: <Github className="h-5 w-5" /> },
   { name: "linkedin", icon: <Linkedin className="h-5 w-5" /> },
   { name: "portfolio", icon: <BriefcaseBusinessIcon className="h-5 w-5" /> },
-  { name: "kaggle", icon: <FlameIcon className="h-5 w-5" /> },
+  { name: "behance", icon: <Behance className="h-5 w-5" /> },
 ] as const
 
 export default function ExtraForm() {
@@ -45,7 +45,7 @@ export default function ExtraForm() {
       email: store.email!,
       phone: store.phone!,
       birthDate: store.birthDate!,
-      NIN: store.NIN!,
+      discord: store.discord!,
       enrollmentYear: store.enrollmentYear!,
       institution: store.institution!,
       matricule: store.matricule!,
@@ -59,7 +59,7 @@ export default function ExtraForm() {
       github: store.github!,
       linkedin: store.linkedin!,
       portfolio: store.portfolio!,
-      kaggle: store.kaggle!,
+      behance: store.behance!,
     }),
     onSuccess: () => {
       router.push("/register/success")
@@ -77,7 +77,7 @@ export default function ExtraForm() {
       github: store.github,
       linkedin: store.linkedin,
       portfolio: store.portfolio,
-      kaggle: store.kaggle,
+      behance: store.behance,
     },
     onSubmit: (values) => {
       store.setState(values)
@@ -88,7 +88,7 @@ export default function ExtraForm() {
   useEffect(() => {
     if (!store.rehydrated) return;
 
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.NIN)
+    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord)
       router.push("/register/personal");
 
     if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major)
@@ -103,7 +103,7 @@ export default function ExtraForm() {
       github: store.github,
       linkedin: store.linkedin,
       portfolio: store.portfolio,
-      kaggle: store.kaggle,
+      behance: store.behance,
     })
   }, [store, form])
 

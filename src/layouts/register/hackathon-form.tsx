@@ -43,7 +43,7 @@ export default function HackathonForm() {
   useEffect(() => {
     if (!store.rehydrated) return;
 
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.NIN)
+    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord)
       router.push("/register/personal");
 
     if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major)
@@ -91,10 +91,6 @@ export default function HackathonForm() {
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="partly" id="option-two" />
                         <Label htmlFor="option-two">Not all days</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="no" id="option-three" />
-                        <Label htmlFor="option-three">No</Label>
                       </div>
                     </RadioGroup>
                   </FormControl>

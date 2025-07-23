@@ -21,7 +21,7 @@ async function main() {
       "email",
       "phone",
       "birthDate",
-      "NIN",
+      "discord",
       "institution",
       "enrollmentYear",
       "major",
@@ -35,7 +35,7 @@ async function main() {
       "github",
       "linkedin",
       "portfolio",
-      "kaggle"
+      "behance"
     ]
 
     const rows = data.map(row => headers.map(h => {

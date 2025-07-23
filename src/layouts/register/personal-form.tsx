@@ -7,9 +7,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import useControlledForm from "@/hooks/use-controlled-form"
 import { registrationSchema } from "@/lib/schemas"
 import { useRegistrationStore } from "@/lib/store"
-import { ChevronRightIcon, IdCardIcon, MailIcon, PhoneIcon, UserIcon } from "lucide-react"
+import { ChevronRightIcon, MailIcon, PhoneIcon, UserIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
+import { Discord } from "react-bootstrap-icons"
 
 const formSchema = registrationSchema.pick({
   firstName: true,
@@ -17,7 +18,7 @@ const formSchema = registrationSchema.pick({
   email: true,
   phone: true,
   birthDate: true,
-  NIN: true,
+  discord: true,
 })
 
 export default function PersonalForm() {
@@ -33,7 +34,7 @@ export default function PersonalForm() {
       email: store.email,
       phone: store.phone,
       birthDate: store.birthDate,
-      NIN: store.NIN,
+      discord: store.discord,
     },
     onSubmit: (values) => {
       store.setState(values)
@@ -50,7 +51,7 @@ export default function PersonalForm() {
       email: store.email,
       phone: store.phone,
       birthDate: store.birthDate,
-      NIN: store.NIN,
+      discord: store.discord,
     })
   }, [store.rehydrated, form])
 
@@ -130,12 +131,12 @@ export default function PersonalForm() {
 
           <FormField
             control={form.control}
-            name="NIN"
+            name="discord"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What&apos;s your National ID number?</FormLabel>
+                <FormLabel className="text-[#F0FFD1]">What&apos;s your Discord username?</FormLabel>
                 <FormControl>
-                  <CustomInput icon={<IdCardIcon className="h-5 w-5" />} placeholder="National ID number" {...field} />
+                  <CustomInput icon={<Discord className="h-5 w-5" />} placeholder="Discord username" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

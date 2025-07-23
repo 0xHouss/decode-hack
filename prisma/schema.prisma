@@ -22,7 +22,7 @@ model Submission {
   email     String
   phone     String
   birthDate String
-  NIN       String
+  discord   String
 
   enrollmentYear String
   institution    String
@@ -39,5 +39,5 @@ model Submission {
   github     String
   linkedin   String
   portfolio  String
-  kaggle     String
+  behance    String
 }

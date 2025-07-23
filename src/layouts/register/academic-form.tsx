@@ -40,7 +40,7 @@ export default function AcademicForm() {
   useEffect(() => {
     if (!store.rehydrated) return;
 
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.NIN)
+    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord)
       router.push("/register/personal");
 
     form.reset({

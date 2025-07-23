@@ -16,7 +16,7 @@ export async function submitRegistrationForm(
       email,
       phone,
       birthDate,
-      NIN,
+      discord,
       enrollmentYear,
       institution,
       matricule,
@@ -30,7 +30,7 @@ export async function submitRegistrationForm(
       github,
       linkedin,
       portfolio,
-      kaggle
+      behance
     } = validatedData;
 
     if (!process.env.DISCORD_WEBHOOK_URL)
@@ -57,7 +57,7 @@ export async function submitRegistrationForm(
 - **Email:** ${email}
 - **Phone:** ${phone}
 - **Birth Date:** ${birthDate}
-- **NIN:** ${NIN}
+- **Discord username:** ${discord}
 
 ### 🎓 Academic Information
 - **Enrollment Year:** ${enrollmentYear}
@@ -77,7 +77,7 @@ export async function submitRegistrationForm(
 - **GitHub:** ${github || "N/A"}
 - **LinkedIn:** ${linkedin || "N/A"}
 - **Portfolio:** ${portfolio || "N/A"}
-- **Kaggle:** ${kaggle || "N/A"}
+- **Behance:** ${behance || "N/A"}
     `.trim(),
             timestamp: new Date().toISOString(),
           }
