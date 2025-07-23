@@ -4,13 +4,18 @@ import {
   QueryClient,
   QueryClientProvider
 } from '@tanstack/react-query';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SplashScreen from "./splashscreen";
 
 const queryClient = new QueryClient()
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [splashDone, setSplashDone] = useState(false);
+
+  useEffect(() => {
+    if (splashDone)
+      document.body.classList.remove("overflow-hidden");
+  }, [splashDone]);
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
+import Light from "@/components/light";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -22,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.className} antialiased flex flex-col items-center max-w-screen overflow-x-hidden relative min-h-screen`}>
+      <body className={`${poppins.className} antialiased flex flex-col items-center max-w-screen overflow-x-hidden relative min-h-screen overflow-hidden`}>
         <Providers>
           <Header />
 
@@ -30,17 +31,13 @@ export default function RootLayout({
             backgroundImage: "linear-gradient(transparent, var(--background) 80%), url('/line-pattern.png')"
           }} />
 
-          <Image
-            src="/light.svg"
-            alt="Light Decoration"
+          <Light
             width={500}
             height={500}
             className="absolute top-0 left-0 z-0 pointer-events-none"
           />
 
-          <Image
-            src="/light.svg"
-            alt="Light Decoration"
+          <Light
             width={500}
             height={500}
             className="absolute top-0 right-0 z-0 rotate-y-180 pointer-events-none"

@@ -40,7 +40,7 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
   return (
     <div
       ref={splashRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/60 backdrop-blur-2xl transition-all duration-500"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#4E941A]/10 backdrop-blur-2xl transition-all duration-500"
     >
       <Lottie
         animationData={animationData}
