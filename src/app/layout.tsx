@@ -55,7 +55,7 @@ export default function RootLayout({
             </div>
           </div>
 
-          <div className="absolute top-[30svh] md:top-[30svw] lg:top-[20svw] z-20">
+          <div className="absolute top-55 lg:top-65 left-0 right-0 z-50">
             {children}
           </div>
         </Providers>
