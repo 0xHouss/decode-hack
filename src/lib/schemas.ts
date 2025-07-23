@@ -8,7 +8,12 @@ export const registrationSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   email: z.email("Invalid email address"),
-  phone: z.string().min(1, "Phone number is required"),
+  phone: z
+    .string()
+    .min(1, "Phone number is required")
+    .refine((val) => val.length === 10, {
+      message: "Phone number must be 10 characters long",
+    }),
   birthDate: z
     .string()
     .refine((val) => parseDate(val), {
@@ -17,7 +22,12 @@ export const registrationSchema = z.object({
     .refine((val) => parseDate(val) < today, {
       message: "Must be in the past",
     }),
-  NIN: z.string().min(1, "National ID number is required"),
+  NIN: z
+    .string()
+    .min(1, "National ID number is required")
+    .refine((val) => val.length === 18, {
+      message: "National ID number must be 18 characters long",
+    }),
   enrollmentYear: z
     .string()
     .refine((val) => !isNaN(Number(val)), {
