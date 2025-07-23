@@ -27,7 +27,7 @@ export default function Register() {
         <div className="flex flex-col items-center gap-14 flex-1/2">
           <div className="relative">
             <Image
-              src="/decode-icon.svg"
+              src="/decode-icon.png"
               alt="Register Illustration"
               width={300}
               height={400}
