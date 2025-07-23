@@ -14,8 +14,8 @@ datasource db {
 }
 
 model Submission {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
+  id          String   @id @default(cuid())
+  submittedAt DateTime @default(now())
 
   firstName String
   lastName  String
