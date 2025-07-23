@@ -30,17 +30,17 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
   // When both are done, slide up
   useEffect(() => {
     if (animationDone && resourcesLoaded) {
-      splashRef.current?.classList.add('-translate-y-full');
+      splashRef.current?.classList.add('opacity-0');
       setTimeout(() => {
         onFinish(); // Tell parent to hide
-      }, 1000); // Matches transition duration
+      }, 500); // Matches transition duration
     }
   }, [animationDone, resourcesLoaded, onFinish]);
 
   return (
     <div
       ref={splashRef}
-      className="fixed inset-0 bg-[radial-gradient(#030B01,#051600)] bg-background z-50 flex items-center justify-center transition-transform duration-1000"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/60 backdrop-blur-2xl transition-all duration-500"
     >
       <Lottie
         animationData={animationData}
