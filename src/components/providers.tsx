@@ -1,18 +1,20 @@
 "use client";
 
-import { useCenteredScroll } from "@/hooks/use-centered-scroll";
 import {
   QueryClient,
   QueryClientProvider
 } from '@tanstack/react-query';
+import { useState } from "react";
+import SplashScreen from "./splashscreen";
 
 const queryClient = new QueryClient()
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  // useCenteredScroll()
+  const [splashDone, setSplashDone] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
+      {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
       {children}
     </QueryClientProvider>
   )
