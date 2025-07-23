@@ -121,7 +121,13 @@ export default function AcademicForm() {
           <div className="bg-gradient-to-r from-[#5D9535] to-[#073B05] rounded-full">
             <div className="p-px bg-gradient-to-r from-[#E9FFD9]/30 to-[#E3E812]/30 rounded-full">
               <div className="bg-background rounded-full">
-                <Link href="/register/personal" className={cn(buttonVariants({ variant: "default" }), "bg-gradient-to-r from-[#5D9535]/50 to-[#073B05]/30 rounded-full gap-0")}>
+                <Link
+                  href="/register/personal"
+                  className={cn(buttonVariants({ variant: "default" }), "bg-gradient-to-r from-[#5D9535]/50 to-[#073B05]/30 rounded-full gap-0")}
+                  onClick={() => store.setState({
+                    ...form.getValues()
+                  })}
+                >
                   <ChevronLeftIcon className="text-[#FDFFB4]" />
                   <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pr-1">Back</p>
                 </Link>
