@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { sections, socials } from "@/lib/config";
+import { MailIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
@@ -14,7 +15,10 @@ export default function Footer() {
           <div className="flex justify-between gap-4 lg:gap-15 flex-wrap">
             <div className="flex flex-col gap-2">
               <h3 className="font-semibold lg:text-lg">Contact Us</h3>
-              <Link href="mailto:sectiond.relations@gmail.com" target="_blank" className="text-sm lg:text-base">sectiond.relations@gmail.com</Link>
+              <Link href="mailto:sectiond.relations@gmail.com" target="_blank" className="flex items-center gap-2 text-sm lg:text-base">
+                <MailIcon className="text-[#C3E956]" />
+                <p>sectiond.relations@gmail.com</p>
+              </Link>
             </div>
 
             <div className="flex flex-col gap-2 lg:flex-1/2">
