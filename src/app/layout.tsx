@@ -21,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${poppins.className} antialiased flex flex-col items-center max-w-screen overflow-x-hidden relative min-h-screen `}>
+    <html lang="en" className="scroll-smooth max-w-screen overflow-x-clip" suppressHydrationWarning>
+      <body className={`${poppins.className} antialiased flex flex-col items-center w-screen overflow-x-hidden relative min-h-screen`}>
         <Providers>
           <Header />
 
