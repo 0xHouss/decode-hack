@@ -25,7 +25,7 @@ export default function Hero() {
                 boxShadow: "inset 0 0 10px #4E941A"
               }}>
                 <p>
-                  A <span className="text-[#C3E956]">three-day</span> online <span className="text-[#C3E956]">hackathon</span> designed to introduce IT across a real-world problem: ecology, open to all <span className="text-[#C3E956]">beginners</span> and <span className="text-[#C3E956]">passionate learners</span>. Animated and mentored by experts, it offers an engaging and supportive environment. We’ll help you live your first and unforgettable hackathon experience.
+                  A <span className="text-[#C3E956]">three-day</span> online <span className="text-[#C3E956]">hackathon</span> from <span className="text-[#C3E956]">31 July</span> to <span className="text-[#C3E956]">3 August 2025</span> designed to introduce IT across a real-world problem: ecology, open to all <span className="text-[#C3E956]">beginners</span> and <span className="text-[#C3E956]">passionate learners</span>. Animated and mentored by experts, it offers an engaging and supportive environment. We’ll help you live your first and unforgettable hackathon experience.
                 </p>
 
                 <p>

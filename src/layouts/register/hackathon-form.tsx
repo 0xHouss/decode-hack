@@ -43,11 +43,11 @@ export default function HackathonForm() {
   useEffect(() => {
     if (!store.rehydrated) return;
 
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord)
-      router.push("/register/personal");
-
-    if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major)
-      router.push("/register/academic");
+    // if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord)
+    //   router.push("/register/personal");
+    //
+    // if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major)
+    //   router.push("/register/academic");
 
     form.reset({
       teamName: store.teamName,
@@ -81,7 +81,7 @@ export default function HackathonForm() {
             render={({ field }) => (
               <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
                 <FormItem className="space-y-2 bg-[#050B08] p-4 rounded-2xl">
-                  <FormLabel className="text-[#F0FFD1] text-wrap">Will you be available during the days of the hackathon?</FormLabel>
+                  <FormLabel className="text-[#F0FFD1] text-wrap">Will you be available from July 31st to August 3rd?</FormLabel>
                   <FormControl>
                     <RadioGroup {...field} onValueChange={(value) => field.onChange(value)} className="flex flex-col space-y-2">
                       <div className="flex items-center space-x-2">
