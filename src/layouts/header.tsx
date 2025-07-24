@@ -8,6 +8,7 @@ import {
   SheetTitle
 } from "@/components/ui/sheet";
 import { sections } from "@/lib/config";
+import { handleScroll } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -43,7 +44,10 @@ export default function Header() {
                       key={section.title}
                       href={section.href}
                       className="text-lg flex items-center gap-4"
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        handleScroll(e, section)
+                        setOpen(false)
+                      }}
                     >
                       <section.icon className="text-[#C3E956]" />
                       <p>{section.title}</p>
@@ -77,13 +81,14 @@ export default function Header() {
           </Link>
 
           <div className="hidden md:block z-50">
-            {sections.map((link) => (
+            {sections.map((section) => (
               <Link
-                key={link.title}
-                href={link.href}
+                key={section.title}
+                href={section.href}
+                onClick={(e) => handleScroll(e, section)}
                 className="text-sm lg:text-base text-white hover:text-[#5D9535] transition-colors duration-300 px-4 py-2 z-50"
               >
-                {link.title}
+                {section.title}
               </Link>
             ))}
           </div>

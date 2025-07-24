@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth max-w-screen overflow-x-clip" suppressHydrationWarning>
-      <body className={`${poppins.className} antialiased flex flex-col items-center w-screen overflow-x-hidden relative min-h-screen`}>
+      <body className={`${poppins.className} scroll-smooth antialiased flex flex-col items-center w-screen overflow-x-hidden relative min-h-screen`}>
         <Providers>
           <Header />
 

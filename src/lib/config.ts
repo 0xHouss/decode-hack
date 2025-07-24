@@ -24,6 +24,7 @@ export const sections = [
     title: "Home",
     href: "/#home",
     icon: HomeIcon,
+    centerScroll: true
   },
   {
     title: "About",
@@ -32,13 +33,14 @@ export const sections = [
   },
   {
     title: "Vision & Mission",
-    href: "/#vision-mission",
+    href: "#vision-mission",
     icon: HandHeartIcon,
   },
   {
     title: "Sponsors",
     href: "/#sponsors",
-    icon: HandshakeIcon
+    icon: HandshakeIcon,
+    centerScroll: true
   },
   {
     title: "FAQ",

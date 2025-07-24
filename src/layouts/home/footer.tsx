@@ -1,5 +1,8 @@
+"use client";
+
 import { Separator } from "@/components/ui/separator";
 import { sections, socials } from "@/lib/config";
+import { handleScroll } from "@/lib/utils";
 import { MailIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,6 +52,7 @@ export default function Footer() {
                 <Link
                   key={section.title}
                   href={section.href}
+                  onClick={(e) => handleScroll(e, section)}
                   className="text-sm lg:text-base text-nowrap"
                 >
                   {section.title}
