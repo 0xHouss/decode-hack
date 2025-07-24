@@ -3,5 +3,5 @@
 import PersonalForm from '@/layouts/register/personal-form';
 
 export default function PersonalFormPage() {
-  return <PersonalForm />
+  return PersonalForm
 }

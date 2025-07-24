@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import animationData from '@/../public/splash.json';
 import Lottie from 'lottie-react';
-import animationData from '@/../public/splash.json'; // adjust path
+import { useEffect, useRef, useState } from 'react';
 
 interface SplashScreenProps {
   onFinish: () => void;

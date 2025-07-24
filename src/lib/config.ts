@@ -1,5 +1,5 @@
 import { BadgeInfoIcon, HandHeartIcon, HandshakeIcon, HomeIcon, MessageCircleQuestionIcon } from "lucide-react";
-import { Discord, Instagram, Tiktok } from "react-bootstrap-icons"
+import { Discord, Instagram, Tiktok } from "react-bootstrap-icons";
 
 export const socials = [
   {

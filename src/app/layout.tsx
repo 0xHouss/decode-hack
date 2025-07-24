@@ -1,10 +1,9 @@
+import Light from "@/components/light";
 import Providers from "@/components/providers";
 import Header from "@/layouts/header";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Image from "next/image";
 import "./globals.css";
-import Light from "@/components/light";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -22,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.className} antialiased flex flex-col items-center max-w-screen overflow-x-hidden relative min-h-screen overflow-hidden`}>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${poppins.className} antialiased flex flex-col items-center max-w-screen overflow-x-hidden relative min-h-screen `}>
         <Providers>
           <Header />
 

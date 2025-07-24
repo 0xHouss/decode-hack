@@ -15,6 +15,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (splashDone)
       document.body.classList.remove("overflow-hidden");
+    else
+      document.body.classList.add("overflow-hidden");
   }, [splashDone]);
 
   return (

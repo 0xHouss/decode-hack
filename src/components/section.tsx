@@ -1,10 +1,10 @@
 import { cn } from '@/lib/utils';
-import React from 'react'
+import { ReactNode } from 'react';
 
 interface SectionProps {
   id?: string;
   className?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export default function Section({ id, className, children }: SectionProps) {
