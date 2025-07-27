@@ -48,7 +48,7 @@ export default function Hero() {
                 ))}
               </div>
 
-              <Link href="/register/personal" className="text-xs md:text-base items-center flex p-2 border border-[#073B05] inset-ring inset-ring-[black] rounded-md bg-gradient-to-br from-[#4E941A] via-[#4E941A]/60 to-[#073B05]">
+              <Link href="/register/late" className="text-xs md:text-base items-center flex p-2 border border-[#073B05] inset-ring inset-ring-[black] rounded-md bg-gradient-to-br from-[#4E941A] via-[#4E941A]/60 to-[#073B05]">
                 <span className="px-2">
                   Register now
                 </span>

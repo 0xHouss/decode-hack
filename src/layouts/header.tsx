@@ -58,7 +58,7 @@ export default function Header() {
                 <div className="flex flex-col gap-3">
                   <div className="flex bg-gradient-to-br from-[#C3E956]/80 to-[#C3E956]/30 rounded-full p-px">
                     <Link
-                      href="/register/personal"
+                      href="/register/late"
                       className="text-sm rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 p-3 w-full text-center"
                       onClick={() => setOpen(false)}
                     >
@@ -95,7 +95,7 @@ export default function Header() {
 
           <div className="hidden md:flex bg-gradient-to-br from-[#C3E956]/80 to-[#C3E956]/30 rounded-full p-px">
             <Link
-              href="/register/personal"
+              href="/register/late"
               className="text-xs md:text-base rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 py-2 px-4"
             >
               Register now

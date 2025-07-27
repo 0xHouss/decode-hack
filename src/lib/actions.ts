@@ -7,6 +7,13 @@ import { registrationSchema } from "./schemas";
 export async function submitRegistrationForm(
   data: z.infer<typeof registrationSchema>
 ) {
+  data
+  throw new Error("Oops! It seems you've come a bit late to the party.\nRegistration is closed now.");
+}
+
+export async function submitRegistrationFormOld(
+  data: z.infer<typeof registrationSchema>
+) {
   try {
     const validatedData = registrationSchema.parse(data);
 
