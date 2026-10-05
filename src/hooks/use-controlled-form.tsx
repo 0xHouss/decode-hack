@@ -10,7 +10,7 @@ export default function useControlledForm<TSchema extends ZodObject<any, z.core.
   onSubmit?: SubmitHandler<z.infer<TSchema>>;
 }) {
   const form = useForm<z.infer<TSchema>>({
-    resolver: zodResolver(schema) as Resolver<z.output<TSchema>, any, z.output<TSchema>>,
+    resolver: zodResolver(schema) as unknown as Resolver<z.output<TSchema>, any, z.output<TSchema>>,
     defaultValues
   });
 

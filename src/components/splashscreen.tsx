@@ -1,7 +1,7 @@
 'use client';
 
 import animationData from '@/../public/splash.json';
-import Lottie from 'lottie-react';
+import { Lottie } from 'lottie-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface SplashScreenProps {
@@ -43,13 +43,11 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
       className="fixed w-screen h-[100svh] inset-0 z-50 flex items-center justify-center bg-[#4E941A]/10 backdrop-blur-2xl transition-all duration-500"
     >
       <Lottie
-        animationData={animationData}
+        src={animationData}
         loop={false}
         autoplay
-        onComplete={handleLottieComplete}
-        className="w-[80svw] md:w-[50svw] lg:w-[20svw]"
-        height={500}
-        width={500}
+        subscriptions={{ complete: handleLottieComplete }}
+        className="w-[80svw] md:w-[50svw] lg:w-[20svw] aspect-[9/16]"
       />
     </div>
   );
