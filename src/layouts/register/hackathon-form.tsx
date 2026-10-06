@@ -43,11 +43,15 @@ export default function HackathonForm() {
   useEffect(() => {
     if (!store.rehydrated) return;
 
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord)
-      router.push("/register/personal");
+    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord) {
+      router.replace("/register/personal");
+      return;
+    }
 
-    if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major)
-      router.push("/register/academic");
+    if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major) {
+      router.replace("/register/academic");
+      return;
+    }
 
     form.reset({
       teamName: store.teamName,

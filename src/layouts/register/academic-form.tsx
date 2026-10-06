@@ -40,8 +40,10 @@ export default function AcademicForm() {
   useEffect(() => {
     if (!store.rehydrated) return;
 
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord)
-      router.push("/register/personal");
+    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord) {
+      router.replace("/register/personal");
+      return;
+    }
 
     form.reset({
       enrollmentYear: store.enrollmentYear,
