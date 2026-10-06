@@ -6,7 +6,7 @@ export default function VisionMission() {
       <h2 className="reveal text-4xl md:text-5xl bg-gradient-to-r text-center lg:text-left from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">Our Vision & <br className="md:hidden" /> Mission</h2>
 
       <div className="flex flex-col md:flex-row justify-between lg:w-6xl gap-10">
-        <div className="reveal p-2 lg:p-7 bg-[url('/container-background.png')] rounded-2xl bg-cover flex-1/2">
+        <div className="reveal reveal-left p-2 lg:p-7 bg-[url('/container-background.png')] rounded-2xl bg-cover flex-1/2">
           <div className="p-5 lg:p-7 bg-gradient-to-b from-[#0D1C13] to-[#0A160F] shadow-2xl rounded-2xl h-full">
             <h3 className="text-2xl lg:text-3xl">Our Mission</h3>
             <p className="text-muted-foreground mt-2 lg:mt-4 max-w-2/3 lg:max-w-2/3 text-xs lg:text-base">
@@ -15,7 +15,7 @@ export default function VisionMission() {
           </div>
         </div>
 
-        <div className="reveal p-2 lg:p-7 bg-[url('/container-background.png')] rounded-2xl bg-cover flex-1/2">
+        <div className="reveal reveal-right p-2 lg:p-7 bg-[url('/container-background.png')] rounded-2xl bg-cover flex-1/2">
           <div className="relative overflow-clip p-5 lg:p-7 bg-gradient-to-b from-[#0D1C13] to-[#0A160F] shadow-2xl rounded-2xl">
             <h3 className="text-2xl lg:text-3xl">Our Vision</h3>
             <p className="text-muted-foreground mt-2 lg:mt-4 max-w-4/7 lg:max-w-2/3 text-xs lg:text-base z-30">

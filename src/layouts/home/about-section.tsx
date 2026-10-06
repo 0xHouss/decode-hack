@@ -6,8 +6,8 @@ import { Discord } from "react-bootstrap-icons";
 export default function About() {
   return (
     <Section id="about" className="lg:mt-20">
-      <div className="reveal grid grid-cols-1 lg:grid-cols-2 rounded-lg overflow-clip bg-[#4E941A]/5 backdrop-blur-xs">
-        <div className="p-6 md:p-10 flex flex-col items-start gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 rounded-lg overflow-clip bg-[#4E941A]/5 backdrop-blur-xs">
+        <div className="reveal reveal-left p-6 md:p-10 flex flex-col items-start gap-8">
           <div className="space-y-4">
             <h2 className="text-4xl md:text-5xl bg-gradient-to-r from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">Who are we?</h2>
 
@@ -25,7 +25,7 @@ export default function About() {
           </Link>
         </div>
 
-        <div className="mt-0 m-5 md:mt-5 p-5 rounded-2xl bg-[#073B05]/30">
+        <div className="reveal reveal-right mt-0 m-5 md:mt-5 p-5 rounded-2xl bg-[#073B05]/30">
           <Image
             src="/section-d-banner.jpg"
             alt="About Us"

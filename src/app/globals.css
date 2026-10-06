@@ -106,6 +106,13 @@ html[data-splash-seen] [data-splash] {
   }
 }
 
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translate(var(--reveal-x, 0px), var(--reveal-y, 40px));
+  }
+}
+
 @keyframes float {
   50% {
     transform: translateY(-10px);
@@ -130,12 +137,28 @@ html:not([data-splash-seen]) body:has([data-splash]) .enter {
 @utility reveal {
   @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
-      --enter-y: 40px;
-      animation: enter-up linear both;
+      animation: reveal-in linear both;
       animation-timeline: view();
-      animation-range: entry 0% cover 25%;
+      animation-range: var(--reveal-range, entry 0% cover 25%);
     }
   }
+}
+
+/* Direction modifiers for side-by-side content */
+@utility reveal-left {
+  --reveal-x: -48px;
+  --reveal-y: 0px;
+}
+
+@utility reveal-right {
+  --reveal-x: 48px;
+  --reveal-y: 0px;
+}
+
+/* Finish once the element is fully on screen, for content at the very
+   bottom of the page that can't scroll any higher */
+@utility reveal-entry {
+  --reveal-range: entry 0% entry 100%;
 }
 
 /* Hover and press feedback for buttons and links */

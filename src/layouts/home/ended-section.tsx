@@ -13,7 +13,7 @@ export default function Ended() {
       <div className="w-[40svw] aspect-square rounded-full bg-[#4E941A]/15 blur-[150px] absolute bottom-0 right-0 translate-y-1/3" />
 
       <Section id="ended" className="flex flex-col lg:flex-row justify-between gap-10 max-w-8xl items-center">
-        <div className="reveal space-y-4 w-fit flex-1/2">
+        <div className="reveal reveal-left space-y-4 w-fit flex-1/2">
           <h2 className="text-3xl lg:text-4xl bg-gradient-to-r from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">
             That&apos;s a wrap!
           </h2>
@@ -22,7 +22,7 @@ export default function Ended() {
           </p>
         </div>
 
-        <div className="reveal relative flex-1/2 flex justify-center">
+        <div className="reveal reveal-right relative flex-1/2 flex justify-center">
           <Image
             src="/decode-icon.png"
             alt="Decode Hack icon"
