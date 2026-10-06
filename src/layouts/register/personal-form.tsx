@@ -45,14 +45,9 @@ export default function PersonalForm() {
   useEffect(() => {
     if (!store.rehydrated) return;
 
-    form.reset({
-      firstName: store.firstName,
-      lastName: store.lastName,
-      email: store.email,
-      phone: store.phone,
-      birthDate: store.birthDate,
-      discord: store.discord,
-    })
+    // Fill the form once the persisted data has loaded
+    const { firstName, lastName, email, phone, birthDate, discord } = useRegistrationStore.getState()
+    form.reset({ firstName, lastName, email, phone, birthDate, discord })
   }, [store.rehydrated, form])
 
   return (

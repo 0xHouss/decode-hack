@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
-import { ChevronLeftIcon, XIcon } from "lucide-react"
+import { ChevronLeftIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 

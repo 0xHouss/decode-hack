@@ -2,15 +2,25 @@
 
 import { registrationEndDate } from "@/lib/config";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 interface CondownProps {
   className?: string;
 }
 
+// Current time in whole seconds, updated every second on the client only
+const subscribeToClock = (onTick: () => void) => {
+  const interval = setInterval(onTick, 1000);
+  return () => clearInterval(interval);
+};
+const getNowSeconds = () => Math.floor(Date.now() / 1000);
+const getServerNowSeconds = () => null;
+
 export default function Countdown({ className }: CondownProps) {
-  const getTimeLeft = () => {
-    const total = registrationEndDate.getTime() - Date.now();
+  const nowSeconds = useSyncExternalStore(subscribeToClock, getNowSeconds, getServerNowSeconds);
+
+  const getTimeLeft = (now: number) => {
+    const total = registrationEndDate.getTime() - now;
     const clamp = (n: number) => Math.max(0, n);
 
     return {
@@ -22,15 +32,7 @@ export default function Countdown({ className }: CondownProps) {
     };
   };
 
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft(getTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const timeLeft = nowSeconds === null ? null : getTimeLeft(nowSeconds * 1000);
 
   const pad = (n: number) => n.toString().padStart(2, "0");
 
@@ -40,8 +42,10 @@ export default function Countdown({ className }: CondownProps) {
         Registrations ends in :
       </h2>
 
-      <p className="text-5xl font-bold tracking-widest text-muted-foreground" suppressHydrationWarning>
-        {timeLeft.isDone ? (
+      <p className="text-5xl font-bold tracking-widest text-muted-foreground">
+        {!timeLeft ? (
+          "--:--:--:--"
+        ) : timeLeft.isDone ? (
           "00:00:00:00"
         ) : (
           `${pad(timeLeft.days)}:${pad(timeLeft.hours)}:${pad(

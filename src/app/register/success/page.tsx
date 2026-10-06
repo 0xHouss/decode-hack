@@ -7,11 +7,11 @@ import Link from "next/link";
 import { useEffect } from "react";
 
 export default function RegistrationSuccessPage() {
-  const store = useRegistrationStore()
+  const clearData = useRegistrationStore((state) => state.clearData)
 
   useEffect(() => {
-    store.clearData()
-  }, []);
+    clearData()
+  }, [clearData]);
 
   return (
     <div className="flex flex-col gap-3 items-center">

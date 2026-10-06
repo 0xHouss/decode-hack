@@ -9,11 +9,10 @@ import { submitRegistrationForm } from "@/lib/actions"
 import { registrationSchema } from "@/lib/schemas"
 import { useRegistrationStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
-import { useMutation } from "@tanstack/react-query"
 import { BriefcaseBusinessIcon, ChevronLeftIcon, FlameIcon, HammerIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useTransition } from "react"
 import { Behance, Github, Linkedin } from "react-bootstrap-icons"
 
 const formSchema = registrationSchema.pick({
@@ -37,36 +36,42 @@ export default function ExtraForm() {
   const store = useRegistrationStore()
 
   const [error, setError] = useState("")
+  const [isPending, startTransition] = useTransition()
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: () => submitRegistrationForm({
-      firstName: store.firstName!,
-      lastName: store.lastName!,
-      email: store.email!,
-      phone: store.phone!,
-      birthDate: store.birthDate!,
-      discord: store.discord!,
-      enrollmentYear: store.enrollmentYear!,
-      institution: store.institution!,
-      matricule: store.matricule!,
-      major: store.major!,
-      teamName: store.teamName!,
-      availability: store.availability!,
-      prevExperience: store.prevExperience!,
-      prevExperienceDetails: store.prevExperienceDetails!,
-      motivation: store.motivation!,
-      skills: store.skills!,
-      github: store.github!,
-      linkedin: store.linkedin!,
-      portfolio: store.portfolio!,
-      behance: store.behance!,
-    }),
-    onSuccess: () => {
+  const submit = () => startTransition(async () => {
+    // Read the latest state: the values saved by onSubmit aren't in this render's `store` yet
+    const data = useRegistrationStore.getState()
+
+    try {
+      const result = await submitRegistrationForm({
+        firstName: data.firstName!,
+        lastName: data.lastName!,
+        email: data.email!,
+        phone: data.phone!,
+        birthDate: data.birthDate!,
+        discord: data.discord!,
+        enrollmentYear: data.enrollmentYear!,
+        institution: data.institution!,
+        matricule: data.matricule!,
+        major: data.major!,
+        teamName: data.teamName!,
+        availability: data.availability!,
+        prevExperience: data.prevExperience!,
+        prevExperienceDetails: data.prevExperienceDetails!,
+        motivation: data.motivation!,
+        skills: data.skills!,
+        github: data.github!,
+        linkedin: data.linkedin!,
+        portfolio: data.portfolio!,
+        behance: data.behance!,
+      })
+
+      if (result?.error) return setError(result.error)
+
       router.push("/register/success")
-    },
-    onError: (err) => {
+    } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
-    },
+    }
   })
 
   const [form, handleSubmit] = useControlledForm({
@@ -81,7 +86,7 @@ export default function ExtraForm() {
     },
     onSubmit: (values) => {
       store.setState(values)
-      mutate()
+      submit()
     },
   })
 
@@ -105,7 +110,7 @@ export default function ExtraForm() {
       portfolio: store.portfolio,
       behance: store.behance,
     })
-  }, [store, form])
+  }, [store, form, router])
 
 
   return (

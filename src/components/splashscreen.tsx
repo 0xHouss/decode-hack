@@ -13,6 +13,13 @@ const subscribe = () => () => {};
 const getSeen = () => document.documentElement.hasAttribute(SEEN_ATTRIBUTE);
 const getServerSeen = () => false;
 
+const subscribeToLoad = (onLoad: () => void) => {
+  window.addEventListener('load', onLoad);
+  return () => window.removeEventListener('load', onLoad);
+};
+const getLoaded = () => document.readyState === 'complete';
+const getServerLoaded = () => false;
+
 export default function SplashScreen() {
   const seen = useSyncExternalStore(subscribe, getSeen, getServerSeen);
   const [finished, setFinished] = useState(false);
@@ -32,22 +39,13 @@ export default function SplashScreen() {
 
 function SplashAnimation({ onFinish }: { onFinish: () => void }) {
   const [animationDone, setAnimationDone] = useState(false);
-  const [resourcesLoaded, setResourcesLoaded] = useState(false);
+  const resourcesLoaded = useSyncExternalStore(subscribeToLoad, getLoaded, getServerLoaded);
   const splashRef = useRef<HTMLDivElement>(null);
 
   // Wait for animation complete
   const handleLottieComplete = () => {
     setAnimationDone(true);
   };
-
-  // Wait for page load
-  useEffect(() => {
-    if (document.readyState === 'complete') {
-      setResourcesLoaded(true);
-    } else {
-      window.addEventListener('load', () => setResourcesLoaded(true));
-    }
-  }, []);
 
   // When both are done, fade out
   useEffect(() => {

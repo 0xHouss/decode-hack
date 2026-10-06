@@ -2,6 +2,29 @@ import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
 import { RegistrationSchema } from "./schemas"
 
+const initialData: RegistrationSchema = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  birthDate: "",
+  discord: "",
+  enrollmentYear: "",
+  institution: "",
+  matricule: "",
+  major: "",
+  teamName: "",
+  availability: "yes",
+  prevExperience: "no",
+  prevExperienceDetails: "",
+  motivation: "",
+  skills: "",
+  github: "",
+  linkedin: "",
+  portfolio: "",
+  behance: "",
+}
+
 export type RegistrationState = Partial<RegistrationSchema> & {
   setState: (partial: Partial<RegistrationSchema>) => void
   clearData: () => void
@@ -12,51 +35,11 @@ export type RegistrationState = Partial<RegistrationSchema> & {
 export const useRegistrationStore = create<RegistrationState>()(
   persist(
     (set) => ({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      birthDate: "",
-      discord: "",
-      enrollmentYear: "",
-      institution: "",
-      matricule: "",
-      major: "",
-      teamName: "",
-      availability: "yes" as const,
-      prevExperience: "no" as const,
-      prevExperienceDetails: "",
-      motivation: "",
-      skills: "",
-      github: "",
-      linkedin: "",
-      portfolio: "",
-      behance: "",
+      ...initialData,
       rehydrated: false,
       setRehydrated: (value) => set({ rehydrated: value }),
       setState: (partial) => set(() => ({ ...partial })),
-      clearData: () => set(() => ({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        birthDate: "",
-        discord: "",
-        enrollmentYear: "",
-        institution: "",
-        matricule: "",
-        major: "",
-        teamName: "",
-        availability: "yes" as const,
-        prevExperience: "no" as const,
-        prevExperienceDetails: "",
-        motivation: "",
-        skills: "",
-        github: "",
-        linkedin: "",
-        portfolio: "",
-        behance: "",
-      })),
+      clearData: () => set(() => ({ ...initialData })),
     }),
     {
       name: "registration-store",

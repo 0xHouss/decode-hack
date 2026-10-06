@@ -4,16 +4,19 @@ import z from "zod";
 import { prisma } from "./prisma";
 import { registrationSchema } from "./schemas";
 
+// Server actions return errors instead of throwing them: in production React
+// replaces a thrown error's message with a generic one before it reaches the client.
+type SubmitResult = { error: string } | undefined
+
 export async function submitRegistrationForm(
-  data: z.infer<typeof registrationSchema>
-) {
-  data
-  throw new Error("Oops! It seems you've come a bit late to the party.\nRegistration is closed now.");
+  _data: z.infer<typeof registrationSchema>
+): Promise<SubmitResult> {
+  return { error: "Oops! It seems you've come a bit late to the party.\nRegistration is closed now." };
 }
 
 export async function submitRegistrationFormOld(
   data: z.infer<typeof registrationSchema>
-) {
+): Promise<SubmitResult> {
   try {
     const validatedData = registrationSchema.parse(data);
 
@@ -93,6 +96,6 @@ export async function submitRegistrationFormOld(
     });
   } catch (error) {
     console.error("Error submitting registration form:", error);
-    throw error
+    return { error: "Something went wrong while submitting your registration. Please try again." };
   }
 }

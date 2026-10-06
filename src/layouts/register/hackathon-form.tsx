@@ -55,7 +55,7 @@ export default function HackathonForm() {
       prevExperience: store.prevExperience,
       prevExperienceDetails: store.prevExperienceDetails,
     })
-  }, [store, form])
+  }, [store, form, router])
 
   return (
     <Form {...form}>

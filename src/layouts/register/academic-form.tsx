@@ -49,7 +49,7 @@ export default function AcademicForm() {
       institution: store.institution,
       major: store.major,
     })
-  }, [store, form])
+  }, [store, form, router])
 
   return (
     <Form {...form}>
