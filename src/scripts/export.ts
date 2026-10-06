@@ -38,9 +38,12 @@ async function main() {
       "behance"
     ]
 
+    // CSV escapes quotes by doubling them; quoted fields can also hold commas and newlines
+    const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
+
     const rows = data.map(row => headers.map(h => {
-      if (h === 'submittedAt') return formatDate(row[h]);
-      return JSON.stringify(row[h] ?? '')
+      if (h === 'submittedAt') return escape(formatDate(row[h]));
+      return escape(row[h] ?? '')
     }).join(','));
 
     const csv = [headers.join(','), ...rows].join('\n');

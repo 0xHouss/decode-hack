@@ -33,7 +33,7 @@ export const sections = [
   },
   {
     title: "Vision & Mission",
-    href: "#vision-mission",
+    href: "/#vision-mission",
     icon: HandHeartIcon,
   },
   {
