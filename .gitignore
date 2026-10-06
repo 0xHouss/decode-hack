@@ -42,3 +42,6 @@ next-env.d.ts
 
 # prisma
 *.db
+
+# registration exports (personal data)
+export.csv
