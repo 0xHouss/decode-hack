@@ -1,7 +1,6 @@
 import Section from "@/components/section";
 import { socials } from "@/lib/config";
 import { Separator } from "@radix-ui/react-separator";
-import { MoveUpRightIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
@@ -25,11 +24,11 @@ export default function Hero() {
                 boxShadow: "inset 0 0 10px #4E941A"
               }}>
                 <p>
-                  A <span className="text-[#C3E956]">three-day</span> online <span className="text-[#C3E956]">hackathon</span> from <span className="text-[#C3E956]">31 July</span> to <span className="text-[#C3E956]">3 August 2025</span> designed to introduce IT across a real-world problem: ecology, open to all <span className="text-[#C3E956]">beginners</span> and <span className="text-[#C3E956]">passionate learners</span>. Animated and mentored by experts, it offers an engaging and supportive environment. We’ll help you live your first and unforgettable hackathon experience.
+                  A <span className="text-[#C3E956]">three-day</span> online <span className="text-[#C3E956]">hackathon</span> held from <span className="text-[#C3E956]">31 July</span> to <span className="text-[#C3E956]">3 August 2025</span>, designed to introduce IT through a real-world problem: ecology. Open to all <span className="text-[#C3E956]">beginners</span> and <span className="text-[#C3E956]">passionate learners</span>, it was animated and mentored by experts in an engaging and supportive environment, giving many participants their first, unforgettable hackathon experience.
                 </p>
 
                 <p>
-                  <span className="text-[#C3E956]">Challenge yourself</span> and join us to <span className="text-[#C3E956]">build a better planet</span>!
+                  Thank you to everyone who took up the <span className="text-[#C3E956]">challenge</span> and helped us <span className="text-[#C3E956]">build a better planet</span>!
                 </p>
               </div>
             </div>
@@ -47,13 +46,6 @@ export default function Hero() {
                   </Link>
                 ))}
               </div>
-
-              <Link href="/register/late" className="text-xs md:text-base items-center flex p-2 border border-[#073B05] inset-ring inset-ring-[black] rounded-md bg-gradient-to-br from-[#4E941A] via-[#4E941A]/60 to-[#073B05]">
-                <span className="px-2">
-                  Register now
-                </span>
-                <MoveUpRightIcon className="h-5 w-5" />
-              </Link>
             </div>
           </div>
         </div>

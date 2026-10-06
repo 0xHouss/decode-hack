@@ -1,9 +1,8 @@
-import Countdown from "@/components/countdown";
 import About from "@/layouts/home/about-section";
+import Ended from "@/layouts/home/ended-section";
 import FAQ from "@/layouts/home/FAQ-section";
 import Footer from "@/layouts/home/footer";
 import Hero from "@/layouts/home/hero-section";
-import Register from "@/layouts/home/register-section";
 import SplashScreen from "@/components/splashscreen";
 import Sponsors from "@/layouts/home/sponsors-section";
 import VisionMission from "@/layouts/home/vision-mission-section";
@@ -14,10 +13,6 @@ export default function Home() {
       <SplashScreen />
       <main className="relative w-full">
         <Hero />
-
-        <div className="text-center w-full">
-          <Countdown className="" />
-        </div>
 
         <div className="relative">
           <About />
@@ -30,7 +25,7 @@ export default function Home() {
         </div>
         <Sponsors />
         <FAQ />
-        <Register />
+        <Ended />
       </main>
       <Footer />
     </>

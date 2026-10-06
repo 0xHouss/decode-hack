@@ -7,12 +7,14 @@ import {
   SheetHeader,
   SheetTitle
 } from "@/components/ui/sheet";
-import { sections } from "@/lib/config";
+import { sections, socials } from "@/lib/config";
 import { handleScroll } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+
+const discord = socials.find(social => social.name === "Discord")!;
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -58,11 +60,12 @@ export default function Header() {
                 <div className="flex flex-col gap-3">
                   <div className="flex bg-gradient-to-br from-[#C3E956]/80 to-[#C3E956]/30 rounded-full p-px">
                     <Link
-                      href="/register/late"
+                      href={discord.href}
+                      target="_blank"
                       className="text-sm rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 p-3 w-full text-center"
                       onClick={() => setOpen(false)}
                     >
-                      Register now
+                      Join our Discord
                     </Link>
                   </div>
                 </div>
@@ -95,10 +98,11 @@ export default function Header() {
 
           <div className="hidden md:flex bg-gradient-to-br from-[#C3E956]/80 to-[#C3E956]/30 rounded-full p-px">
             <Link
-              href="/register/late"
+              href={discord.href}
+              target="_blank"
               className="text-xs md:text-base rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 py-2 px-4"
             >
-              Register now
+              Join our Discord
             </Link>
           </div>
 
