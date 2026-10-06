@@ -11,7 +11,7 @@ export function SponsorCard({ sponsor }: { sponsor: typeof sponsors[0] }) {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Link href={sponsor.url} target="_blank" rel="noopener noreferrer">
+        <Link href={sponsor.url} target="_blank" rel="noopener noreferrer" className="block transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
           <Image
             src={sponsor.logo}
             alt={`Sponsor ${sponsor.name} Logo`}

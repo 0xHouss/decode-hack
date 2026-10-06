@@ -9,7 +9,7 @@ interface FAQCardProps {
 
 function FAQCard({ children, className }: FAQCardProps) {
   return (
-    <div className={cn("rounded-lg col-span-2 lg:h-70 bg-gradient-to-br from-[#4E941A]/80 to-[#4E941A]/20 p-px z-0", className)}>
+    <div className={cn("reveal rounded-lg col-span-2 lg:h-70 bg-gradient-to-br from-[#4E941A]/80 to-[#4E941A]/20 p-px z-0", className)}>
       <div className={cn("relative h-full w-full bg-background rounded-lg z-20 p-8 pr-5", className)}>
         {children}
       </div>
@@ -20,7 +20,7 @@ function FAQCard({ children, className }: FAQCardProps) {
 export default function FAQ() {
   return (
     <Section id="faq" className="flex flex-col items-center gap-10 max-w-7xl">
-      <h2 className="text-4xl lg:text-4xl bg-gradient-to-r text-center lg:text-left from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">Frequently Asked Questions</h2>
+      <h2 className="reveal text-4xl lg:text-4xl bg-gradient-to-r text-center lg:text-left from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">Frequently Asked Questions</h2>
 
       <div className="relative grid grid-cols-1 lg:grid-cols-6 gap-2 w-full">
         <FAQCard className="rounded-tr-[300px] lg:rounded-tl-[300px] lg:rounded-tr-lg col-span-3">

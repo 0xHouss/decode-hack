@@ -20,7 +20,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-8 left-3 right-3 lg:w-full lg:left-1/2 lg:-translate-x-1/2 rounded-full bg-gradient-to-r from-[#C3E956]/80 to-[#C3E956]/30 lg:max-w-6xl p-px z-10">
+    <header className="enter [--enter-y:-12px] absolute top-8 left-3 right-3 lg:w-full lg:left-1/2 lg:-translate-x-1/2 rounded-full bg-gradient-to-r from-[#C3E956]/80 to-[#C3E956]/30 lg:max-w-6xl p-px z-10">
       <div className="bg-background rounded-full">
         <nav className="relative flex justify-between items-center bg-[#C3E95626] rounded-full m-auto p-2 lg:p-4">
           <Sheet open={open} onOpenChange={setOpen}>
@@ -62,7 +62,7 @@ export default function Header() {
                     <Link
                       href={discord.href}
                       target="_blank"
-                      className="text-sm rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 p-3 w-full text-center"
+                      className="press text-sm rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 p-3 w-full text-center"
                       onClick={() => setOpen(false)}
                     >
                       Join our Discord
@@ -100,7 +100,7 @@ export default function Header() {
             <Link
               href={discord.href}
               target="_blank"
-              className="text-xs md:text-base rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 py-2 px-4"
+              className="press text-xs md:text-base rounded-full bg-gradient-to-r text-white from-[#5D9535]/80 to-[#073B05]/70 py-2 px-4"
             >
               Join our Discord
             </Link>

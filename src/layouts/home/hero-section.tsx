@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <Section id="home" className="flex flex-col gap-3 w-screen overflow-clip max-w-screen md:gap-10 items-center justify-center mt-0 lg:mt-0 lg:mb-20">
-      <div>
+      <div className="enter">
         <h1 className="text-4xl md:text-7xl flex gap-4">
           <span className="bg-gradient-to-b bg-clip-text text-transparent from-[#E3E812] to-[#E9FDB0]/50">Decode</span>
           <span className="bg-gradient-to-b bg-clip-text text-transparent from-[#E9FDB0] to-[#E9FDB0]/40">Hack</span>
@@ -14,7 +14,7 @@ export default function Hero() {
         <Separator className="my-4 w-full mx-auto h-[3px] bg-gradient-to-r from-[#4E941A]/0 via-[#4E941A] to-[#4E941A]/0" />
       </div>
 
-      <div className="bg-gradient-to-b from-[#4E941A] to-[#073B05] p-px rounded-xl">
+      <div className="enter [--enter-delay:150ms] bg-gradient-to-b from-[#4E941A] to-[#073B05] p-px rounded-xl">
         <div className="bg-background rounded-xl">
           <div className="relative md:max-w-3xl w-full rounded-lg bg-[#073B05]/20 p-2 space-y-2">
             <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[400px] h-[80px] bg-[#D8FEE5]/20 rounded-full blur-[100px] z-0" />
@@ -39,7 +39,7 @@ export default function Hero() {
                     key={social.name}
                     href={social.href}
                     target="_blank"
-                    className="text-xs md:text-base p-2 gap-2 border flex items-center border-[#073B05] inset-ring inset-ring-[black] rounded-md bg-gradient-to-b from-[#0C1711] via-[#0A120D] to-[#0A120D]"
+                    className="press text-xs md:text-base p-2 gap-2 border flex items-center border-[#073B05] inset-ring inset-ring-[black] rounded-md bg-gradient-to-b from-[#0C1711] via-[#0A120D] to-[#0A120D]"
                   >
                     <social.icon fill="#E8FFD7" className="h-5 w-5" />
                     {social.name}
