@@ -4,12 +4,14 @@ import FAQ from "@/layouts/home/FAQ-section";
 import Footer from "@/layouts/home/footer";
 import Hero from "@/layouts/home/hero-section";
 import Register from "@/layouts/home/register-section";
+import SplashScreen from "@/components/splashscreen";
 import Sponsors from "@/layouts/home/sponsors-section";
 import VisionMission from "@/layouts/home/vision-mission-section";
 
 export default function Home() {
   return (
     <>
+      <SplashScreen />
       <main className="relative w-full">
         <Hero />
 

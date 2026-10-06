@@ -22,6 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth max-w-screen overflow-x-clip" suppressHydrationWarning>
+      <head>
+        {/* Mark the splash screen as seen before first paint, so it doesn't flash on repeat visits */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem("splash-seen"))document.documentElement.setAttribute("data-splash-seen","")}catch(e){}`,
+          }}
+        />
+      </head>
       <body className={`${poppins.className} scroll-smooth antialiased flex flex-col items-center w-screen overflow-x-hidden relative min-h-screen`}>
         <Providers>
           <Header />
