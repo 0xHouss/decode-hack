@@ -5,6 +5,9 @@ import { MouseEvent } from "react";
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
+export const pick = <T extends object, K extends keyof T>(object: T, keys: readonly K[]) =>
+  Object.fromEntries(keys.map((key) => [key, object[key]])) as Pick<T, K>
+
 const pad = (n: number) => n.toString().padStart(2, "0")
 
 // Formats a calendar date as dd/mm/yyyy, the format parseDate reads

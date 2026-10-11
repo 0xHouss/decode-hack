@@ -3,55 +3,13 @@
 import { CustomInput } from "@/components/custom-input"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import useControlledForm from "@/hooks/use-controlled-form"
-import { registrationSchema } from "@/lib/schemas"
-import { useRegistrationStore } from "@/lib/store"
+import useRegistrationStep from "@/hooks/use-registration-step"
 import { cn } from "@/lib/utils"
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, GraduationCapIcon, HashIcon, SchoolIcon } from "lucide-react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
-
-const formSchema = registrationSchema.pick({
-  enrollmentYear: true,
-  matricule: true,
-  institution: true,
-  major: true,
-})
 
 export default function AcademicForm() {
-  const router = useRouter()
-  const store = useRegistrationStore()
-
-  const [form, handleSubmit] = useControlledForm({
-    schema: formSchema,
-    defaultValues: {
-      enrollmentYear: store.enrollmentYear,
-      matricule: store.matricule,
-      institution: store.institution,
-      major: store.major,
-    },
-    onSubmit: (values) => {
-      store.setState(values)
-      router.push("/register/hackathon")
-    },
-  })
-
-  useEffect(() => {
-    if (!store.rehydrated) return;
-
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord) {
-      router.replace("/register/personal");
-      return;
-    }
-
-    form.reset({
-      enrollmentYear: store.enrollmentYear,
-      matricule: store.matricule,
-      institution: store.institution,
-      major: store.major,
-    })
-  }, [store, form, router])
+  const { form, handleSubmit, saveDraft } = useRegistrationStep("academic")
 
   return (
     <Form {...form}>
@@ -125,9 +83,7 @@ export default function AcademicForm() {
                 <Link
                   href="/register/personal"
                   className={cn(buttonVariants({ variant: "default" }), "bg-gradient-to-r from-[#5D9535]/50 to-[#073B05]/30 rounded-full gap-0")}
-                  onClick={() => store.setState({
-                    ...form.getValues()
-                  })}
+                  onClick={saveDraft}
                 >
                   <ChevronLeftIcon className="text-[#FDFFB4]" />
                   <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pr-1">Back</p>

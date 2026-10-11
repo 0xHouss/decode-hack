@@ -4,25 +4,15 @@ import { CustomInput } from "@/components/custom-input"
 import { FormError } from "@/components/form-error"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import useControlledForm from "@/hooks/use-controlled-form"
+import useRegistrationStep from "@/hooks/use-registration-step"
 import { submitRegistrationForm } from "@/lib/actions"
-import { registrationSchema } from "@/lib/schemas"
 import { useRegistrationStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
 import { BriefcaseBusinessIcon, ChevronLeftIcon, FlameIcon, HammerIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useEffect, useState, useTransition } from "react"
+import { useState, useTransition } from "react"
 import { Behance, Github, Linkedin } from "react-bootstrap-icons"
-
-const formSchema = registrationSchema.pick({
-  motivation: true,
-  skills: true,
-  github: true,
-  linkedin: true,
-  portfolio: true,
-  behance: true,
-})
 
 const platforms = [
   { name: "github", icon: <Github className="h-5 w-5" /> },
@@ -33,38 +23,14 @@ const platforms = [
 
 export default function ExtraForm() {
   const router = useRouter()
-  const store = useRegistrationStore()
 
   const [error, setError] = useState("")
   const [isPending, startTransition] = useTransition()
 
+  // Runs after the hook has saved this step, so the store holds every answer
   const submit = () => startTransition(async () => {
-    // Read the latest state: the values saved by onSubmit aren't in this render's `store` yet
-    const data = useRegistrationStore.getState()
-
     try {
-      const result = await submitRegistrationForm({
-        firstName: data.firstName!,
-        lastName: data.lastName!,
-        email: data.email!,
-        phone: data.phone!,
-        birthDate: data.birthDate!,
-        discord: data.discord!,
-        enrollmentYear: data.enrollmentYear!,
-        institution: data.institution!,
-        matricule: data.matricule!,
-        major: data.major!,
-        teamName: data.teamName!,
-        availability: data.availability!,
-        prevExperience: data.prevExperience!,
-        prevExperienceDetails: data.prevExperienceDetails!,
-        motivation: data.motivation!,
-        skills: data.skills!,
-        github: data.github!,
-        linkedin: data.linkedin!,
-        portfolio: data.portfolio!,
-        behance: data.behance!,
-      })
+      const result = await submitRegistrationForm(useRegistrationStore.getState())
 
       if (result?.error) return setError(result.error)
 
@@ -74,50 +40,7 @@ export default function ExtraForm() {
     }
   })
 
-  const [form, handleSubmit] = useControlledForm({
-    schema: formSchema,
-    defaultValues: {
-      motivation: store.motivation,
-      skills: store.skills,
-      github: store.github,
-      linkedin: store.linkedin,
-      portfolio: store.portfolio,
-      behance: store.behance,
-    },
-    onSubmit: (values) => {
-      store.setState(values)
-      submit()
-    },
-  })
-
-  useEffect(() => {
-    if (!store.rehydrated) return;
-
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord) {
-      router.replace("/register/personal");
-      return;
-    }
-
-    if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major) {
-      router.replace("/register/academic");
-      return;
-    }
-
-    if (!store.teamName || !store.availability || !store.prevExperience) {
-      router.replace("/register/hackathon");
-      return;
-    }
-
-    form.reset({
-      motivation: store.motivation,
-      skills: store.skills,
-      github: store.github,
-      linkedin: store.linkedin,
-      portfolio: store.portfolio,
-      behance: store.behance,
-    })
-  }, [store, form, router])
-
+  const { form, handleSubmit, saveDraft } = useRegistrationStep("extra", submit)
 
   return (
     <Form {...form}>
@@ -180,9 +103,7 @@ export default function ExtraForm() {
                 <Link
                   href="/register/hackathon"
                   className={cn(buttonVariants({ variant: "default" }), "bg-gradient-to-r from-[#5D9535]/50 to-[#073B05]/30 rounded-full gap-0")}
-                  onClick={() => store.setState({
-                    ...form.getValues()
-                  })}
+                  onClick={saveDraft}
                 >
                   <ChevronLeftIcon className="text-[#FDFFB4]" />
                   <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pr-1">Back</p>

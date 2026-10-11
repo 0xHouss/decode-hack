@@ -4,51 +4,12 @@ import { CustomInput } from "@/components/custom-input"
 import { DatePicker } from "@/components/date-picker"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import useControlledForm from "@/hooks/use-controlled-form"
-import { registrationSchema } from "@/lib/schemas"
-import { useRegistrationStore } from "@/lib/store"
+import useRegistrationStep from "@/hooks/use-registration-step"
 import { ChevronRightIcon, MailIcon, PhoneIcon, UserIcon } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
 import { Discord } from "react-bootstrap-icons"
 
-const formSchema = registrationSchema.pick({
-  firstName: true,
-  lastName: true,
-  email: true,
-  phone: true,
-  birthDate: true,
-  discord: true,
-})
-
 export default function PersonalForm() {
-  const router = useRouter()
-
-  const store = useRegistrationStore()
-
-  const [form, handleSubmit] = useControlledForm({
-    schema: formSchema,
-    defaultValues: {
-      firstName: store.firstName,
-      lastName: store.lastName,
-      email: store.email,
-      phone: store.phone,
-      birthDate: store.birthDate,
-      discord: store.discord,
-    },
-    onSubmit: (values) => {
-      store.setState(values)
-      router.push("/register/academic")
-    },
-  })
-
-  useEffect(() => {
-    if (!store.rehydrated) return;
-
-    // Fill the form once the persisted data has loaded
-    const { firstName, lastName, email, phone, birthDate, discord } = useRegistrationStore.getState()
-    form.reset({ firstName, lastName, email, phone, birthDate, discord })
-  }, [store.rehydrated, form])
+  const { form, handleSubmit } = useRegistrationStep("personal")
 
   return (
     <Form {...form}>

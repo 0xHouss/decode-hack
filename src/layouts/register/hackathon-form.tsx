@@ -6,60 +6,13 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
-import useControlledForm from "@/hooks/use-controlled-form"
-import { registrationSchema } from "@/lib/schemas"
-import { useRegistrationStore } from "@/lib/store"
+import useRegistrationStep from "@/hooks/use-registration-step"
 import { cn } from "@/lib/utils"
 import { ChevronLeftIcon, ChevronRightIcon, UsersIcon } from "lucide-react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
-
-const formSchema = registrationSchema.pick({
-  teamName: true,
-  availability: true,
-  prevExperience: true,
-  prevExperienceDetails: true,
-})
 
 export default function HackathonForm() {
-  const router = useRouter()
-  const store = useRegistrationStore()
-
-  const [form, handleSubmit] = useControlledForm({
-    schema: formSchema,
-    defaultValues: {
-      teamName: store.teamName,
-      availability: store.availability,
-      prevExperience: store.prevExperience,
-      prevExperienceDetails: store.prevExperienceDetails,
-    },
-    onSubmit: (values) => {
-      store.setState(values)
-      router.push("/register/extra")
-    },
-  })
-
-  useEffect(() => {
-    if (!store.rehydrated) return;
-
-    if (!store.firstName || !store.lastName || !store.email || !store.phone || !store.birthDate || !store.discord) {
-      router.replace("/register/personal");
-      return;
-    }
-
-    if (!store.institution || !store.enrollmentYear || !store.matricule || !store.major) {
-      router.replace("/register/academic");
-      return;
-    }
-
-    form.reset({
-      teamName: store.teamName,
-      availability: store.availability,
-      prevExperience: store.prevExperience,
-      prevExperienceDetails: store.prevExperienceDetails,
-    })
-  }, [store, form, router])
+  const { form, handleSubmit, saveDraft } = useRegistrationStep("hackathon")
 
   return (
     <Form {...form}>
@@ -155,9 +108,7 @@ export default function HackathonForm() {
                 <Link
                   href="/register/academic"
                   className={cn(buttonVariants({ variant: "default" }), "bg-gradient-to-r from-[#5D9535]/50 to-[#073B05]/30 rounded-full gap-0")}
-                  onClick={() => store.setState({
-                    ...form.getValues()
-                  })}
+                  onClick={saveDraft}
                 >
                   <ChevronLeftIcon className="text-[#FDFFB4]" />
                   <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pr-1">Back</p>

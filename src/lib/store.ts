@@ -1,8 +1,8 @@
 import { create } from "zustand"
-import { createJSONStorage, persist } from "zustand/middleware"
+import { persist } from "zustand/middleware"
 import { RegistrationSchema } from "./schemas"
 
-const initialData: RegistrationSchema = {
+export const initialRegistrationData: RegistrationSchema = {
   firstName: "",
   lastName: "",
   email: "",
@@ -25,31 +25,11 @@ const initialData: RegistrationSchema = {
   behance: "",
 }
 
-export type RegistrationState = Partial<RegistrationSchema> & {
-  setState: (partial: Partial<RegistrationSchema>) => void
-  clearData: () => void
-  rehydrated: boolean;
-  setRehydrated: (v: boolean) => void;
-}
-
-export const useRegistrationStore = create<RegistrationState>()(
+// The answers given so far, saved to localStorage so they survive reloads.
+// Update them with useRegistrationStore.setState().
+export const useRegistrationStore = create<RegistrationSchema>()(
   persist(
-    (set) => ({
-      ...initialData,
-      rehydrated: false,
-      setRehydrated: (value) => set({ rehydrated: value }),
-      setState: (partial) => set(() => ({ ...partial })),
-      clearData: () => set(() => ({ ...initialData })),
-    }),
-    {
-      name: "registration-store",
-      storage: createJSONStorage(() => localStorage),
-      onRehydrateStorage() {
-        return finalState => {
-          if (finalState?.setRehydrated)
-            finalState.setRehydrated(true)
-        }
-      },
-    }
+    () => initialRegistrationData,
+    { name: "registration-store" }
   )
 )
