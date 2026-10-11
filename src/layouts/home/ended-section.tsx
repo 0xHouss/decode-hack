@@ -14,7 +14,7 @@ export default function Ended() {
 
       <Section id="ended" className="flex flex-col lg:flex-row justify-between gap-10 max-w-8xl items-center">
         <div className="reveal reveal-left space-y-4 w-fit flex-1/2">
-          <h2 className="text-3xl lg:text-4xl bg-gradient-to-r from-pistachio to-leaf bg-clip-text text-transparent">
+          <h2 className="text-3xl lg:text-4xl heading-gradient">
             That&apos;s a wrap!
           </h2>
           <p className="text-lg lg:text-2xl max-w-md text-muted-foreground">
@@ -31,7 +31,7 @@ export default function Ended() {
             className="float"
           />
 
-          <div className="absolute top-1/2 left-1/2 -translate-1/2 bg-gradient-to-br from-chartreuse/80 to-chartreuse/30 w-fit rounded-full flex p-px">
+          <div className="absolute top-1/2 left-1/2 -translate-1/2 w-fit flex cta-frame">
             <Link href={discord.href} target="_blank" className="press glow-button flex items-center text-white py-5 px-10 w-fit">
               <p className="px-2 text-nowrap text-xl">Join our Discord</p>
               <MoveUpRightIcon />

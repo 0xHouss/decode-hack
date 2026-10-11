@@ -22,7 +22,7 @@ export function DatePicker({ value, onChange, ...props }: DatePickerProps) {
   const selected = parseDate(value) ?? undefined
 
   return (
-    <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
+    <div className="relative h-fit field-frame">
       <Input
         {...props}
         value={value}

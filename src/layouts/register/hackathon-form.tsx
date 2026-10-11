@@ -36,7 +36,7 @@ export default function HackathonForm() {
             control={form.control}
             name="availability"
             render={({ field }) => (
-              <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
+              <div className="relative h-fit field-frame">
                 <FormItem className="space-y-2 bg-night-900 p-4 rounded-2xl">
                   <FormLabel className="text-cream text-wrap">Will you be available from July 31st to August 3rd?</FormLabel>
                   <FormControl>
@@ -61,7 +61,7 @@ export default function HackathonForm() {
             control={form.control}
             name="prevExperience"
             render={({ field }) => (
-              <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
+              <div className="relative h-fit field-frame">
                 <FormItem className="space-y-2 bg-night-900 p-4 rounded-2xl">
                   <FormLabel className="text-cream text-wrap">Do you have any experience in hackathons?</FormLabel>
                   <FormControl>
@@ -99,7 +99,7 @@ export default function HackathonForm() {
                 <FormItem>
                   <FormLabel className="text-cream">Which ones?</FormLabel>
                   <FormControl>
-                    <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
+                    <div className="relative h-fit field-frame">
                       <Textarea
                         placeholder="Hackathons you took part in"
                         className="rounded-2xl border-0 bg-night-900 dark:bg-night-900 placeholder:text-cream/50"

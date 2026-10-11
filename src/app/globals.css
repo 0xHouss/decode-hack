@@ -159,6 +159,42 @@ html:not([data-splash-seen]) body:has([data-splash]:not([data-leaving])) .enter 
   --reveal-y: 0px;
 }
 
+/* Gradients used across the site. Each only sets how something looks; layout
+   classes like sizes and margins stay where it's used. */
+
+/* Section headings: pistachio to leaf green, left to right */
+@utility heading-gradient {
+  background-image: linear-gradient(to right in oklab, var(--color-pistachio) 0%, var(--color-leaf) 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+/* Page titles: citron fading into pistachio, top to bottom */
+@utility title-gradient {
+  background-image: linear-gradient(to bottom in oklab, var(--color-citron) 0%, color-mix(in oklab, var(--color-pistachio) 50%, transparent) 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+/* A leaf green line that fades out at both ends */
+@utility divider-gradient {
+  background-image: linear-gradient(to right in oklab, color-mix(in oklab, var(--color-leaf) 0%, transparent) 0%, var(--color-leaf) 50%, color-mix(in oklab, var(--color-leaf) 0%, transparent) 100%);
+}
+
+/* 1px gradient border around form fields. Round the field inside to match. */
+@utility field-frame {
+  border-radius: var(--radius-2xl);
+  padding: 1px;
+  background-image: linear-gradient(to bottom in oklab, var(--color-fern) 0%, var(--color-night-600) 100%);
+}
+
+/* 1px chartreuse border around rounded call-to-action buttons */
+@utility cta-frame {
+  border-radius: calc(infinity * 1px);
+  padding: 1px;
+  background-image: linear-gradient(to bottom right in oklab, color-mix(in oklab, var(--color-chartreuse) 80%, transparent) 0%, color-mix(in oklab, var(--color-chartreuse) 30%, transparent) 100%);
+}
+
 /* The large glowing call-to-action button */
 @utility glow-button {
   border-radius: 38px;

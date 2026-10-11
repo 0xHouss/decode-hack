@@ -13,7 +13,7 @@ export default function Register() {
       <Section id="faq" className="flex flex-col lg:flex-row justify-between gap-10 max-w-8xl items-center">
         <div className="flex flex-col gap-14 w-fit flex-1/2">
           <div className="space-y-4">
-            <h2 className="text-3xl lg:text-4xl bg-gradient-to-r from-pistachio to-leaf bg-clip-text text-transparent">
+            <h2 className="text-3xl lg:text-4xl heading-gradient">
               Spots are limited, RUN!
             </h2>
             <p className="text-lg lg:text-2xl max-w-md text-muted-foreground">
@@ -33,7 +33,7 @@ export default function Register() {
               height={400}
             />
 
-            <div className="absolute top-1/2 left-1/2 -translate-1/2 bg-gradient-to-br from-chartreuse/80 to-chartreuse/30 w-fit rounded-full flex p-px">
+            <div className="absolute top-1/2 left-1/2 -translate-1/2 w-fit flex cta-frame">
               <Link href="/register/late" className="glow-button flex items-center text-white py-5 px-10 w-fit">
                 <p className="px-2 text-nowrap text-xl">Register now</p>
                 <MoveUpRightIcon />

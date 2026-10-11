@@ -3,7 +3,7 @@ import Section from "@/components/section";
 export default function VisionMission() {
   return (
     <Section id="vision-mission" className="flex flex-col gap-10 items-center max-w-6xl">
-      <h2 className="reveal text-4xl md:text-5xl bg-gradient-to-r text-center lg:text-left from-pistachio to-leaf bg-clip-text text-transparent">Our Vision & <br className="md:hidden" /> Mission</h2>
+      <h2 className="reveal text-4xl md:text-5xl text-center lg:text-left heading-gradient">Our Vision & <br className="md:hidden" /> Mission</h2>
 
       <div className="flex flex-col md:flex-row justify-between lg:w-6xl gap-10">
         <div className="reveal reveal-left p-2 lg:p-7 bg-[url('/container-background.png')] rounded-2xl bg-cover flex-1/2">

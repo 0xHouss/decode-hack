@@ -58,7 +58,7 @@ export default function Header() {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <div className="flex bg-gradient-to-br from-chartreuse/80 to-chartreuse/30 rounded-full p-px">
+                  <div className="flex cta-frame">
                     <Link
                       href={discord.href}
                       target="_blank"
@@ -96,7 +96,7 @@ export default function Header() {
             ))}
           </div>
 
-          <div className="hidden md:flex bg-gradient-to-br from-chartreuse/80 to-chartreuse/30 rounded-full p-px">
+          <div className="hidden md:flex cta-frame">
             <Link
               href={discord.href}
               target="_blank"

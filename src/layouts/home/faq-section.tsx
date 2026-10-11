@@ -20,7 +20,7 @@ function FAQCard({ children, className }: FAQCardProps) {
 export default function FAQ() {
   return (
     <Section id="faq" className="flex flex-col items-center gap-10 max-w-7xl">
-      <h2 className="reveal text-4xl lg:text-4xl bg-gradient-to-r text-center lg:text-left from-pistachio to-leaf bg-clip-text text-transparent">Frequently Asked Questions</h2>
+      <h2 className="reveal text-4xl lg:text-4xl text-center lg:text-left heading-gradient">Frequently Asked Questions</h2>
 
       <div className="relative grid grid-cols-1 lg:grid-cols-6 gap-2 w-full">
         <FAQCard className="rounded-tr-[300px] lg:rounded-tl-[300px] lg:rounded-tr-lg col-span-3">
@@ -76,7 +76,7 @@ export default function FAQ() {
           <div className="flex flex-col gap-3">
             <div className="h-15 w-15 bg-[url('/email-icon.svg')] bg-contain bg-no-repeat bg-center" />
             <h3 className="text-xl font-semibold text-vanilla">Got another Question?</h3>
-            <p className=" max-w-2/3">Contact us via our discord server and we will be happy to answer you!</p>
+            <p className="max-w-2/3">Contact us via our discord server and we will be happy to answer you!</p>
           </div>
         </FAQCard>
 

@@ -67,7 +67,7 @@ export default function RootLayout({
         />
 
         <div className="absolute top-0 left-0 right-0 h-screen overflow-clip">
-          <div className="absolute top-35 lg:top-45 rounded-t-full left-1/2 -translate-x-1/2 w-[150svw] lg:w-[130svw] aspect-square bg-gradient-to-r from-moss/0 via-chartreuse to-moss/0  pt-[2px]">
+          <div className="absolute top-35 lg:top-45 rounded-t-full left-1/2 -translate-x-1/2 w-[150svw] lg:w-[130svw] aspect-square bg-gradient-to-r from-moss/0 via-chartreuse to-moss/0 pt-[2px]">
             <div className="relative bg-background rounded-t-full w-full h-full overflow-hidden">
               <div className="absolute left-0 right-0 top-0 bottom-0 rounded-t-full bg-gradient-to-b from-leaf/50 via-background to-background" />
             </div>

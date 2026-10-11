@@ -3,7 +3,7 @@ import { Input } from "./ui/input"
 
 function CustomInput({ className, type, icon, ...props }: React.ComponentProps<"input"> & { icon: React.ReactNode }) {
   return (
-    <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
+    <div className="relative h-fit field-frame">
       <Input
         type={type}
         className={cn("h-12 rounded-2xl border-0 bg-night-900 dark:bg-night-900 placeholder:text-cream/50", className)}

@@ -8,10 +8,10 @@ export default function Hero() {
     <Section id="home" className="flex flex-col gap-3 w-screen overflow-clip max-w-screen md:gap-10 items-center justify-center mt-0 lg:mt-0 lg:mb-20">
       <div className="enter">
         <h1 className="text-4xl md:text-7xl flex gap-4">
-          <span className="bg-gradient-to-b bg-clip-text text-transparent from-citron to-pistachio/50">Decode</span>
+          <span className="title-gradient">Decode</span>
           <span className="bg-gradient-to-b bg-clip-text text-transparent from-pistachio to-pistachio/40">Hack</span>
         </h1>
-        <Separator className="my-4 w-full mx-auto h-[3px] bg-gradient-to-r from-leaf/0 via-leaf to-leaf/0" />
+        <Separator className="my-4 w-full mx-auto h-[3px] bg-transparent divider-gradient" />
       </div>
 
       <div className="enter [--enter-delay:150ms] bg-gradient-to-b from-leaf to-forest p-px rounded-xl">
