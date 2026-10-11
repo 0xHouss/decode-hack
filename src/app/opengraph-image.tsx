@@ -6,6 +6,8 @@ export const alt = "Decode Hack - Hack for impact";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// ImageResponse can't read CSS variables, so the colours here repeat the brand
+// palette from globals.css as hex values: leaf, pistachio and ink.
 export default async function OpengraphImage() {
   const logo = await readFile(join(process.cwd(), "public/logo.svg"), "base64");
 

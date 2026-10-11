@@ -21,8 +21,8 @@ export default function Home() {
           <VisionMission />
 
           <div className="-space-y-10 absolute top-1/2 left-1/2 -translate-1/2 -z-10">
-            <div className="w-[50svw] aspect-square rounded-full bg-[#4E941A]/15 blur-[100px]" />
-            <div className="w-[50svw] aspect-square rounded-full bg-[#4E941A]/15 blur-[100px]" />
+            <div className="w-[50svw] aspect-square rounded-full bg-leaf/15 blur-[100px]" />
+            <div className="w-[50svw] aspect-square rounded-full bg-leaf/15 blur-[100px]" />
           </div>
         </div>
         <Sponsors />

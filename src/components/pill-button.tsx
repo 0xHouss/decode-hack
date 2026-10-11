@@ -7,9 +7,9 @@ import { ComponentProps, ReactNode } from "react"
 // The site's rounded green buttons, with a thin light gradient border
 
 const fills = {
-  solid: "bg-gradient-to-r from-[#5D9535] to-[#073B05]",
+  solid: "bg-gradient-to-r from-moss to-forest",
   // Translucent, over the page background
-  faded: "bg-gradient-to-r from-[#5D9535]/50 to-[#073B05]/30",
+  faded: "bg-gradient-to-r from-moss/50 to-forest/30",
 }
 
 interface PillProps {
@@ -26,8 +26,8 @@ const pillClassName = (variant: keyof typeof fills, size: PillProps["size"]) =>
 
 function PillFrame({ className, children }: { className?: string, children: ReactNode }) {
   return (
-    <div className={cn("w-fit rounded-full bg-gradient-to-r from-[#5D9535] to-[#073B05]", className)}>
-      <div className="rounded-full bg-gradient-to-r from-[#E9FFD9]/30 to-[#E3E812]/30 p-px">
+    <div className={cn("w-fit rounded-full bg-gradient-to-r from-moss to-forest", className)}>
+      <div className="rounded-full bg-gradient-to-r from-honeydew/30 to-citron/30 p-px">
         <div className="rounded-full bg-background">
           {children}
         </div>
@@ -37,13 +37,13 @@ function PillFrame({ className, children }: { className?: string, children: Reac
 }
 
 function PillContent({ direction, size, children }: Pick<PillProps, "direction" | "size"> & { children: ReactNode }) {
-  const iconClassName = cn("text-[#FDFFB4]", size === "lg" && "size-6")
+  const iconClassName = cn("text-butter", size === "lg" && "size-6")
 
   return (
     <>
       {direction === "back" && <ChevronLeftIcon className={iconClassName} />}
       <span className={cn(
-        "bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent",
+        "bg-gradient-to-br from-cream to-butter bg-clip-text text-transparent",
         direction === "back" && "pr-1",
         direction === "next" && "pl-1",
       )}>

@@ -22,13 +22,13 @@ export function DatePicker({ value, onChange, ...props }: DatePickerProps) {
   const selected = parseDate(value) ?? undefined
 
   return (
-    <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
+    <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
       <Input
         {...props}
         value={value}
         placeholder="Date of Birth"
         readOnly
-        className="h-12 rounded-2xl border-0 bg-[#050B08] dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
+        className="h-12 rounded-2xl border-0 bg-night-900 dark:bg-night-900 placeholder:text-cream/50"
         onClick={() => setOpen(true)}
         onKeyDown={(e) => {
           if (e.key === "ArrowDown" || e.key === "Enter") {
@@ -42,7 +42,7 @@ export function DatePicker({ value, onChange, ...props }: DatePickerProps) {
           <button
             type="button"
             aria-label="Open calendar"
-            className="absolute top-1/2 right-3 -translate-y-1/2 text-[#F0FFD1]"
+            className="absolute top-1/2 right-3 -translate-y-1/2 text-cream"
           >
             <CalendarIcon className="h-5 w-5" />
           </button>

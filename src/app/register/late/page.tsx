@@ -5,10 +5,10 @@ export default function RegistrationLatePage() {
   return (
     <div className="flex flex-col gap-3 items-center">
       <div>
-        <h1 className="text-2xl text-nowrap lg:text-5xl flex gap-4 bg-gradient-to-b bg-clip-text pb-2 text-transparent from-[#E3E812] to-[#E9FDB0]/50">
+        <h1 className="text-2xl text-nowrap lg:text-5xl flex gap-4 bg-gradient-to-b bg-clip-text pb-2 text-transparent from-citron to-pistachio/50">
           Registration Closed !
         </h1>
-        <Separator className="my-4 w-full mx-auto h-[3px] bg-gradient-to-r from-[#4E941A]/0 via-[#4E941A] to-[#4E941A]/0" />
+        <Separator className="my-4 w-full mx-auto h-[3px] bg-gradient-to-r from-leaf/0 via-leaf to-leaf/0" />
       </div>
 
       <p className="text-lg lg:text-2xl text-center max-w-sm">
