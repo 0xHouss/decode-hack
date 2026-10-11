@@ -36,8 +36,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // data-scroll-behavior lets Next.js turn smooth scrolling off during route changes
   return (
-    <html lang="en" className={`${poppins.variable} scroll-smooth max-w-screen overflow-x-clip`} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} scroll-smooth max-w-screen overflow-x-clip`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/* Mark the splash screen as seen before first paint, so it doesn't flash on repeat visits */}
         <script
