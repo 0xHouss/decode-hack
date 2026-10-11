@@ -123,8 +123,9 @@ html[data-splash-seen] [data-splash] {
   }
 }
 
-/* Hold entrances on their first frame until the splash screen is gone */
-html:not([data-splash-seen]) body:has([data-splash]) .enter {
+/* Hold entrances on their first frame until the splash screen starts fading out,
+   so the page fades in underneath it */
+html:not([data-splash-seen]) body:has([data-splash]:not([data-leaving])) .enter {
   animation-play-state: paused;
 }
 

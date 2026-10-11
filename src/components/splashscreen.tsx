@@ -1,8 +1,9 @@
 'use client';
 
 import animationData from '@/../public/splash.json';
+import { cn } from '@/lib/utils';
 import { Lottie } from 'lottie-react';
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 
 // Set before first paint by the inline script in layout.tsx, and after the
 // splash finishes so client-side navigation back home doesn't replay it.
@@ -40,34 +41,32 @@ export default function SplashScreen() {
 function SplashAnimation({ onFinish }: { onFinish: () => void }) {
   const [animationDone, setAnimationDone] = useState(false);
   const resourcesLoaded = useSyncExternalStore(subscribeToLoad, getLoaded, getServerLoaded);
-  const splashRef = useRef<HTMLDivElement>(null);
 
-  // Wait for animation complete
-  const handleLottieComplete = () => {
-    setAnimationDone(true);
-  };
+  // Fade out once the animation has played and the page has loaded. The page's
+  // entrance animations start at the same time (see globals.css), so they play
+  // underneath the fade instead of after it.
+  const leaving = animationDone && resourcesLoaded;
 
-  // When both are done, fade out
   useEffect(() => {
-    if (animationDone && resourcesLoaded) {
-      splashRef.current?.classList.add('opacity-0');
-      setTimeout(() => {
-        onFinish(); // Tell parent to hide
-      }, 500); // Matches transition duration
-    }
-  }, [animationDone, resourcesLoaded, onFinish]);
+    if (!leaving) return;
+    const timeout = setTimeout(onFinish, 500); // Matches the fade's duration
+    return () => clearTimeout(timeout);
+  }, [leaving, onFinish]);
 
   return (
     <div
-      ref={splashRef}
       data-splash
-      className="fixed w-screen h-[100svh] inset-0 z-50 flex items-center justify-center bg-leaf/10 backdrop-blur-2xl transition-all duration-500"
+      data-leaving={leaving || undefined}
+      className={cn(
+        'fixed w-screen h-[100svh] inset-0 z-50 flex items-center justify-center bg-leaf/10 backdrop-blur-2xl transition-all duration-500',
+        leaving && 'opacity-0',
+      )}
     >
       <Lottie
         src={animationData}
         loop={false}
         autoplay
-        subscriptions={{ complete: handleLottieComplete }}
+        subscriptions={{ complete: () => setAnimationDone(true) }}
         className="w-[80svw] md:w-[50svw] lg:w-[20svw] aspect-[9/16]"
       />
     </div>
