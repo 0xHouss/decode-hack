@@ -21,7 +21,7 @@ export function SponsorCard({ sponsor }: { sponsor: typeof sponsors[0] }) {
           />
         </Link>
       </HoverCardTrigger>
-      <HoverCardContent sideOffset={-40} className="w-90 border p-px rounded-xl border-[#3E941A] bg-ink">
+      <HoverCardContent sideOffset={-40} className="w-90 border p-px rounded-xl border-leaf bg-ink">
         <div className="bg-leaf/18 p-4 space-y-4 rounded-xl" style={{
           boxShadow: "inset 0 0 10px var(--color-leaf)"
         }}>
