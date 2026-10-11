@@ -74,7 +74,6 @@ export default function AcademicForm() {
           <FormField
             control={form.control}
             name="enrollmentYear"
-            rules={{ max: new Date().getFullYear() }}
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-[#F0FFD1]">When did you enroll?</FormLabel>

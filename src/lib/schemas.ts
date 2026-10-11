@@ -1,9 +1,6 @@
 import { z } from "zod"
 import { parseDate } from "./utils"
 
-const today = new Date()
-const currentYear = today.getFullYear()
-
 export const registrationSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
@@ -11,15 +8,15 @@ export const registrationSchema = z.object({
   phone: z
     .string()
     .min(1, "Phone number is required")
-    .refine((val) => val.length === 10, {
-      message: "Phone number must be 10 characters long",
-    }),
+    .regex(/^\d{10}$/, "Phone number must be 10 digits"),
   birthDate: z
     .string()
+    .min(1, "Birth date is required")
     .refine((val) => parseDate(val), {
       message: "Must be a valid date",
+      abort: true,
     })
-    .refine((val) => parseDate(val) < today, {
+    .refine((val) => parseDate(val)! < new Date(), {
       message: "Must be in the past",
     }),
   discord: z
@@ -27,11 +24,10 @@ export const registrationSchema = z.object({
     .min(1, "Discord is required"),
   enrollmentYear: z
     .string()
-    .refine((val) => !isNaN(Number(val)), {
-      message: "Must be a valid year",
-    })
-    .refine((val) => Number(val) <= currentYear, {
-      message: `Must be in the past`,
+    .min(1, "Enrollment year is required")
+    .regex(/^\d{4}$/, "Must be a valid year")
+    .refine((val) => Number(val) <= new Date().getFullYear(), {
+      message: "Can't be in the future",
     }),
   institution: z.string().min(1, "Institution is required"),
   matricule: z.string().min(1, "Matricule is required"),

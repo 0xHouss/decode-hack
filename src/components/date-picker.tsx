@@ -11,19 +11,20 @@ import { formatDate, parseDate } from "@/lib/utils"
 import { CalendarIcon } from "lucide-react"
 import React from "react"
 
-interface DatePickerProps {
+interface DatePickerProps extends Omit<React.ComponentProps<"input">, "value" | "onChange"> {
   value: string
   onChange: (date: string) => void
 }
 
-export function DatePicker({ value, onChange }: DatePickerProps) {
+export function DatePicker({ value, onChange, ...props }: DatePickerProps) {
   const [open, setOpen] = React.useState(false)
-  const [month, setMonth] = React.useState<Date | undefined>(value ? parseDate(value) : undefined)
-  const [localValue, setLocalValue] = React.useState<Date | undefined>(value ? parseDate(value) : undefined)
+  // Derived on every render, so the calendar follows values restored after mount
+  const selected = parseDate(value) ?? undefined
 
   return (
     <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
       <Input
+        {...props}
         value={value}
         placeholder="Date of Birth"
         readOnly
@@ -38,7 +39,13 @@ export function DatePicker({ value, onChange }: DatePickerProps) {
       />
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <CalendarIcon className="absolute top-1/2 right-3 -translate-y-1/2 text-[#F0FFD1] h-5 w-5" />
+          <button
+            type="button"
+            aria-label="Open calendar"
+            className="absolute top-1/2 right-3 -translate-y-1/2 text-[#F0FFD1]"
+          >
+            <CalendarIcon className="h-5 w-5" />
+          </button>
         </PopoverTrigger>
         <PopoverContent
           className="w-auto overflow-hidden p-0"
@@ -46,15 +53,15 @@ export function DatePicker({ value, onChange }: DatePickerProps) {
           alignOffset={-8}
           sideOffset={10}
         >
+          {/* The content unmounts when closed, so defaultMonth is read on every open */}
           <Calendar
             mode="single"
-            selected={localValue}
+            selected={selected}
+            defaultMonth={selected}
             captionLayout="dropdown"
-            month={month}
-            onMonthChange={setMonth}
+            disabled={{ after: new Date() }}
             onSelect={(date) => {
               if (!date) return
-              setLocalValue(date)
               onChange(formatDate(date))
               setOpen(false)
             }}

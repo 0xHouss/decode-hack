@@ -1,5 +1,4 @@
 import { prisma } from '@/lib/prisma';
-import { formatDate } from '@/lib/utils';
 import { Submission } from '@prisma/client';
 import { writeFileSync } from 'fs';
 
@@ -42,7 +41,7 @@ async function main() {
     const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
 
     const rows = data.map(row => headers.map(h => {
-      if (h === 'submittedAt') return escape(formatDate(row[h]));
+      if (h === 'submittedAt') return escape(row[h].toLocaleString('fr-DZ', { timeZone: 'Africa/Algiers' }));
       return escape(row[h] ?? '')
     }).join(','));
 

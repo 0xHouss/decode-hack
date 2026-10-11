@@ -5,16 +5,24 @@ import { MouseEvent } from "react";
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
-export const formatDate = (date: Date) => date.toLocaleString("fr-DZ", {
-  timeZone: "Africa/Algiers",
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-})
+const pad = (n: number) => n.toString().padStart(2, "0")
 
-export const parseDate = (date: string) => {
-  const [day, month, year] = date.split("/").map(Number);
-  return new Date(year, month - 1, day);
+// Formats a calendar date as dd/mm/yyyy, the format parseDate reads
+export const formatDate = (date: Date) =>
+  `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`
+
+// Parses a dd/mm/yyyy date, or returns null if it isn't a real calendar date
+export const parseDate = (value: string) => {
+  const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value);
+  if (!match) return null;
+
+  const [day, month, year] = match.slice(1).map(Number);
+  const date = new Date(year, month - 1, day);
+
+  // Date rolls overflowing values over, so 31/02 would silently become 02/03
+  if (date.getDate() !== day || date.getMonth() !== month - 1) return null;
+
+  return date;
 };
 
 export function handleScroll(e: MouseEvent, section: typeof sections[0]) {
