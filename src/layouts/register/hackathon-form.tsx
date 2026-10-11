@@ -8,9 +8,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
 import useRegistrationStep from "@/hooks/use-registration-step"
 import { UsersIcon } from "lucide-react"
+import { useWatch } from "react-hook-form"
 
 export default function HackathonForm() {
   const { form, handleSubmit, saveDraft } = useRegistrationStep("hackathon")
+  const hasExperience = useWatch({ control: form.control, name: "prevExperience" }) === "yes"
 
   return (
     <Form {...form}>
@@ -63,7 +65,16 @@ export default function HackathonForm() {
                 <FormItem className="space-y-2 bg-[#050B08] p-4 rounded-2xl">
                   <FormLabel className="text-[#F0FFD1] text-wrap">Do you have any experience in hackathons?</FormLabel>
                   <FormControl>
-                    <RadioGroup name={field.name} value={field.value} onValueChange={field.onChange} className="flex flex-col space-y-2">
+                    <RadioGroup
+                      name={field.name}
+                      value={field.value}
+                      onValueChange={(value) => {
+                        field.onChange(value)
+                        // Don't keep details for an answer that no longer asks for them
+                        if (value === "no") form.setValue("prevExperienceDetails", "")
+                      }}
+                      className="flex flex-col space-y-2"
+                    >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="yes" id="experience-yes" />
                         <Label htmlFor="experience-yes">Yes</Label>
@@ -80,23 +91,26 @@ export default function HackathonForm() {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="prevExperienceDetails"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
-                    <Textarea
-                      placeholder="If yes, which ones?"
-                      className="rounded-2xl border-0 bg-[#050B08] dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
-                      {...field} />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {hasExperience && (
+            <FormField
+              control={form.control}
+              name="prevExperienceDetails"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#F0FFD1]">Which ones?</FormLabel>
+                  <FormControl>
+                    <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
+                      <Textarea
+                        placeholder="Hackathons you took part in"
+                        className="rounded-2xl border-0 bg-[#050B08] dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
+                        {...field} />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
         </div>
 
         <div className="flex justify-between w-full">

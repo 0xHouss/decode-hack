@@ -13,10 +13,10 @@ import { useState, useTransition } from "react"
 import { Behance, Github, Linkedin } from "react-bootstrap-icons"
 
 const platforms = [
-  { name: "github", icon: <Github className="h-5 w-5" /> },
-  { name: "linkedin", icon: <Linkedin className="h-5 w-5" /> },
-  { name: "portfolio", icon: <BriefcaseBusinessIcon className="h-5 w-5" /> },
-  { name: "behance", icon: <Behance className="h-5 w-5" /> },
+  { name: "github", label: "GitHub", icon: <Github className="h-5 w-5" /> },
+  { name: "linkedin", label: "LinkedIn", icon: <Linkedin className="h-5 w-5" /> },
+  { name: "portfolio", label: "Portfolio", icon: <BriefcaseBusinessIcon className="h-5 w-5" /> },
+  { name: "behance", label: "Behance", icon: <Behance className="h-5 w-5" /> },
 ] as const
 
 export default function ExtraForm() {
@@ -80,9 +80,9 @@ export default function ExtraForm() {
                 name={platform.name}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#F0FFD1]">{platform.name.charAt(0).toUpperCase() + platform.name.slice(1)} (optional)</FormLabel>
+                    <FormLabel className="text-[#F0FFD1]">{platform.label} (optional)</FormLabel>
                     <FormControl>
-                      <CustomInput icon={platform.icon} placeholder={`Your ${platform.name.charAt(0).toUpperCase() + platform.name.slice(1)} URL`} {...field} />
+                      <CustomInput icon={platform.icon} placeholder={`Your ${platform.label} URL`} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
