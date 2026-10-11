@@ -6,3 +6,9 @@ allowBuilds:
   prisma: true
   sharp: true
   unrs-resolver: true
+
+overrides:
+  # prisma 7.10.0 pins mysql2 3.15.3, which has security advisories. Prisma only
+  # uses it for its own tooling (this app uses Postgres). The override only
+  # matches that exact version, so it stops applying once Prisma updates it.
+  mysql2@3.15.3: ^3.23.1
