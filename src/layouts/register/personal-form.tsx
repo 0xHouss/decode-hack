@@ -2,10 +2,10 @@
 
 import { CustomInput } from "@/components/custom-input"
 import { DatePicker } from "@/components/date-picker"
-import { Button } from "@/components/ui/button"
+import { PillButton } from "@/components/pill-button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import useRegistrationStep from "@/hooks/use-registration-step"
-import { ChevronRightIcon, MailIcon, PhoneIcon, UserIcon } from "lucide-react"
+import { MailIcon, PhoneIcon, UserIcon } from "lucide-react"
 import { Discord } from "react-bootstrap-icons"
 
 export default function PersonalForm() {
@@ -100,14 +100,7 @@ export default function PersonalForm() {
           />
         </div>
 
-        <div className="bg-gradient-to-r from-[#5D9535] to-[#073B05] rounded-full">
-          <div className="p-px bg-gradient-to-r from-[#E9FFD9]/30 to-[#E3E812]/30 rounded-full">
-            <Button type="submit" className="bg-gradient-to-r from-[#5D9535] to-[#073B05] gap-1 rounded-full">
-              <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pl-1">Next</p>
-              <ChevronRightIcon className="text-[#FDFFB4]" />
-            </Button>
-          </div>
-        </div>
+        <PillButton type="submit" direction="next">Next</PillButton>
       </form>
     </Form>
   )

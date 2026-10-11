@@ -1,8 +1,5 @@
-"use client";
-
+import { PillLink } from "@/components/pill-button";
 import { Separator } from "@/components/ui/separator";
-import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
 
 export default function RegistrationLatePage() {
   return (
@@ -18,14 +15,7 @@ export default function RegistrationLatePage() {
         Oops! The registration period has ended. We appreciate your interest in Decode Hack and hope to see you at our future events.
       </p>
 
-      <div className="bg-gradient-to-r from-[#5D9535] to-[#073B05] rounded-full mt-5">
-        <div className="p-px bg-gradient-to-r from-[#E9FFD9]/30 to-[#E3E812]/30 rounded-full">
-          <Link href="/" className="bg-gradient-to-r flex items-center from-[#5D9535] to-[#073B05] gap-1 rounded-full px-4 py-2">
-            <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pl-1">Go back</p>
-            <ChevronRightIcon className="text-[#FDFFB4]" />
-          </Link>
-        </div>
-      </div>
+      <PillLink href="/" direction="next" size="lg" className="mt-5">Go back</PillLink>
     </div>
   )
 }

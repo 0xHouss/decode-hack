@@ -2,14 +2,12 @@
 
 import { CustomInput } from "@/components/custom-input"
 import { FormError } from "@/components/form-error"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { PillButton, PillLink } from "@/components/pill-button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import useRegistrationStep from "@/hooks/use-registration-step"
 import { submitRegistrationForm } from "@/lib/actions"
 import { useRegistrationStore } from "@/lib/store"
-import { cn } from "@/lib/utils"
-import { BriefcaseBusinessIcon, ChevronLeftIcon, FlameIcon, HammerIcon } from "lucide-react"
-import Link from "next/link"
+import { BriefcaseBusinessIcon, FlameIcon, HammerIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useState, useTransition } from "react"
 import { Behance, Github, Linkedin } from "react-bootstrap-icons"
@@ -97,34 +95,11 @@ export default function ExtraForm() {
         </div>
 
         <div className="flex justify-between w-full">
-          <div className="bg-gradient-to-r from-[#5D9535] to-[#073B05] rounded-full">
-            <div className="p-px bg-gradient-to-r from-[#E9FFD9]/30 to-[#E3E812]/30 rounded-full">
-              <div className="bg-background rounded-full">
-                <Link
-                  href="/register/hackathon"
-                  className={cn(buttonVariants({ variant: "default" }), "bg-gradient-to-r from-[#5D9535]/50 to-[#073B05]/30 rounded-full gap-0")}
-                  onClick={saveDraft}
-                >
-                  <ChevronLeftIcon className="text-[#FDFFB4]" />
-                  <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pr-1">Back</p>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <PillLink href="/register/hackathon" variant="faded" direction="back" onClick={saveDraft}>Back</PillLink>
 
-          <div className="bg-gradient-to-r from-[#5D9535] to-[#073B05] rounded-full">
-            <div className="p-px bg-gradient-to-r from-[#E9FFD9]/30 to-[#E3E812]/30 rounded-full">
-              <Button
-                disabled={isPending}
-                type="submit"
-                className="bg-gradient-to-r from-[#5D9535] to-[#073B05] gap-1 rounded-full"
-              >
-                <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent">
-                  {isPending ? "Submitting..." : "Submit"}
-                </p>
-              </Button>
-            </div>
-          </div>
+          <PillButton type="submit" disabled={isPending}>
+            {isPending ? "Submitting..." : "Submit"}
+          </PillButton>
         </div>
       </form>
     </Form>

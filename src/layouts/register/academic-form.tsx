@@ -1,12 +1,10 @@
 "use client"
 
 import { CustomInput } from "@/components/custom-input"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { PillButton, PillLink } from "@/components/pill-button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import useRegistrationStep from "@/hooks/use-registration-step"
-import { cn } from "@/lib/utils"
-import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, GraduationCapIcon, HashIcon, SchoolIcon } from "lucide-react"
-import Link from "next/link"
+import { CalendarIcon, GraduationCapIcon, HashIcon, SchoolIcon } from "lucide-react"
 
 export default function AcademicForm() {
   const { form, handleSubmit, saveDraft } = useRegistrationStep("academic")
@@ -77,29 +75,9 @@ export default function AcademicForm() {
         </div>
 
         <div className="flex justify-between w-full">
-          <div className="bg-gradient-to-r from-[#5D9535] to-[#073B05] rounded-full">
-            <div className="p-px bg-gradient-to-r from-[#E9FFD9]/30 to-[#E3E812]/30 rounded-full">
-              <div className="bg-background rounded-full">
-                <Link
-                  href="/register/personal"
-                  className={cn(buttonVariants({ variant: "default" }), "bg-gradient-to-r from-[#5D9535]/50 to-[#073B05]/30 rounded-full gap-0")}
-                  onClick={saveDraft}
-                >
-                  <ChevronLeftIcon className="text-[#FDFFB4]" />
-                  <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pr-1">Back</p>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <PillLink href="/register/personal" variant="faded" direction="back" onClick={saveDraft}>Back</PillLink>
 
-          <div className="bg-gradient-to-r from-[#5D9535] to-[#073B05] rounded-full">
-            <div className="p-px bg-gradient-to-r from-[#E9FFD9]/30 to-[#E3E812]/30 rounded-full">
-              <Button type="submit" className="bg-gradient-to-r from-[#5D9535] to-[#073B05] gap-1 rounded-full">
-                <p className="bg-gradient-to-br from-[#F0FFD1] to-[#FDFFB4] bg-clip-text text-transparent pl-1">Next</p>
-                <ChevronRightIcon className="text-[#FDFFB4]" />
-              </Button>
-            </div>
-          </div>
+          <PillButton type="submit" direction="next">Next</PillButton>
         </div>
       </form>
     </Form>
