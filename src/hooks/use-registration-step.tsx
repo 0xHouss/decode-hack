@@ -1,10 +1,11 @@
-import useControlledForm from "@/hooks/use-controlled-form"
 import { RegistrationStepName, registrationSteps } from "@/lib/registration-steps"
 import { RegistrationSchema } from "@/lib/schemas"
 import { initialRegistrationData, useRegistrationStore } from "@/lib/store"
 import { pick } from "@/lib/utils"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useEffect, useSyncExternalStore } from "react"
+import { DefaultValues, useForm } from "react-hook-form"
 import z from "zod"
 
 // Object keys keep their insertion order, which is the order the steps are filled in
@@ -31,16 +32,19 @@ export default function useRegistrationStep<TName extends RegistrationStepName>(
   const hasHydrated = useHasHydrated()
   const stepIndex = stepNames.indexOf(name)
 
-  const [form, handleSubmit] = useControlledForm({
-    schema: registrationSteps[name].schema,
+  const form = useForm<Values>({
+    // While TName is generic, TypeScript sees the schema as a union of all four steps
+    // and can't tie it to Values, so it is narrowed by hand
+    resolver: zodResolver(registrationSteps[name].schema as unknown as z.ZodType<Values, Values>),
     // Start empty while hydrating, so the client's first render matches the server's
-    defaultValues: pick(hasHydrated ? useRegistrationStore.getState() : initialRegistrationData, fieldsOf(name)) as Values,
-    onSubmit: (values) => {
-      useRegistrationStore.setState(values)
+    defaultValues: pick(hasHydrated ? useRegistrationStore.getState() : initialRegistrationData, fieldsOf(name)) as DefaultValues<Values>,
+  })
 
-      if (onSubmit) onSubmit()
-      else router.push(registrationSteps[stepNames[stepIndex + 1]].path)
-    },
+  const handleSubmit = form.handleSubmit((values) => {
+    useRegistrationStore.setState(values)
+
+    if (onSubmit) onSubmit()
+    else router.push(registrationSteps[stepNames[stepIndex + 1]].path)
   })
 
   useEffect(() => {
