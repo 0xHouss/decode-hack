@@ -37,8 +37,12 @@ async function main() {
       "behance"
     ]
 
-    // CSV escapes quotes by doubling them; quoted fields can also hold commas and newlines
-    const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
+    // CSV escapes quotes by doubling them; quoted fields can also hold commas and newlines.
+    // Spreadsheets run cells starting with = + - @ as formulas, so those get a leading quote.
+    const escape = (value: string) => {
+      const safe = /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+      return `"${safe.replace(/"/g, '""')}"`;
+    };
 
     const rows = data.map(row => headers.map(h => {
       if (h === 'submittedAt') return escape(row[h].toLocaleString('fr-DZ', { timeZone: 'Africa/Algiers' }));

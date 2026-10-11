@@ -1,6 +1,6 @@
 import About from "@/layouts/home/about-section";
 import Ended from "@/layouts/home/ended-section";
-import FAQ from "@/layouts/home/FAQ-section";
+import FAQ from "@/layouts/home/faq-section";
 import Footer from "@/layouts/home/footer";
 import Hero from "@/layouts/home/hero-section";
 import ScrollReveal from "@/components/scroll-reveal";

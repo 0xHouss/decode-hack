@@ -29,14 +29,15 @@ export default function Footer() {
 
               <ul className="flex gap-3">
                 {socials.map(social => (
-                  <Link
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    className="text-sm lg:text-base text-nowrap"
-                  >
-                    <SocialIcon url={social.href} as="li" style={{ height: 32, width: 32 }} bgColor="#4E941A" />
-                  </Link>
+                  <li key={social.name}>
+                    <Link
+                      href={social.href}
+                      target="_blank"
+                      className="text-sm lg:text-base text-nowrap"
+                    >
+                      <SocialIcon url={social.href} as="span" style={{ height: 32, width: 32 }} bgColor="#4E941A" />
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -49,14 +50,15 @@ export default function Footer() {
 
             <ul className="flex gap-2 flex-wrap justify-between">
               {sections.map(section => (
-                <Link
-                  key={section.title}
-                  href={section.href}
-                  onClick={(e) => handleScroll(e, section)}
-                  className="text-sm lg:text-base text-nowrap"
-                >
-                  {section.title}
-                </Link>
+                <li key={section.title}>
+                  <Link
+                    href={section.href}
+                    onClick={(e) => handleScroll(e, section)}
+                    className="text-sm lg:text-base text-nowrap"
+                  >
+                    {section.title}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
