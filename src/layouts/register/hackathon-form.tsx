@@ -87,14 +87,14 @@ export default function HackathonForm() {
                 <FormItem className="space-y-2 bg-[#050B08] p-4 rounded-2xl">
                   <FormLabel className="text-[#F0FFD1] text-wrap">Will you be available from July 31st to August 3rd?</FormLabel>
                   <FormControl>
-                    <RadioGroup {...field} onValueChange={(value) => field.onChange(value)} className="flex flex-col space-y-2">
+                    <RadioGroup name={field.name} value={field.value} onValueChange={field.onChange} className="flex flex-col space-y-2">
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="yes" id="option-one" />
-                        <Label htmlFor="option-one">Yes</Label>
+                        <RadioGroupItem value="yes" id="availability-yes" />
+                        <Label htmlFor="availability-yes">Yes</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="partly" id="option-two" />
-                        <Label htmlFor="option-two">Not all days</Label>
+                        <RadioGroupItem value="partly" id="availability-partly" />
+                        <Label htmlFor="availability-partly">Not all days</Label>
                       </div>
                     </RadioGroup>
                   </FormControl>
@@ -112,14 +112,14 @@ export default function HackathonForm() {
                 <FormItem className="space-y-2 bg-[#050B08] p-4 rounded-2xl">
                   <FormLabel className="text-[#F0FFD1] text-wrap">Do you have any experience in hackathons?</FormLabel>
                   <FormControl>
-                    <RadioGroup {...field} onValueChange={(value) => field.onChange(value)} className="flex flex-col space-y-2">
+                    <RadioGroup name={field.name} value={field.value} onValueChange={field.onChange} className="flex flex-col space-y-2">
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="yes" id="option-one" />
-                        <Label htmlFor="option-one">Yes</Label>
+                        <RadioGroupItem value="yes" id="experience-yes" />
+                        <Label htmlFor="experience-yes">Yes</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="no" id="option-two" />
-                        <Label htmlFor="option-two">No</Label>
+                        <RadioGroupItem value="no" id="experience-no" />
+                        <Label htmlFor="experience-no">No</Label>
                       </div>
                     </RadioGroup>
                   </FormControl>

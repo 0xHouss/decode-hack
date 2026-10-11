@@ -49,7 +49,10 @@ export const sections = [
   },
 ]
 
-export const registrationEndDate = new Date("2025-07-27T19:00:00Z"); // Set your target date here
+// Closes registration on both the countdown and the server
+export const registrationEndDate = new Date("2025-07-27T19:00:00Z");
+
+export const isRegistrationOpen = () => Date.now() < registrationEndDate.getTime();
 
 export const sponsors = [
   {

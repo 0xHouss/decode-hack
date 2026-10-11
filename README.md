@@ -69,8 +69,7 @@ This reads every submission from the database specified by `DATABASE_URL`, oldes
 
 ## Opening and closing registrations
 
-- The countdown deadline is `registrationEndDate` in `src/lib/config.ts`.
-- Registrations are currently closed: `submitRegistrationForm` in `src/lib/actions.ts` always returns a "registration is closed" error. The working implementation is kept as `submitRegistrationFormOld`. To reopen, restore it as `submitRegistrationForm`.
+Registration closes at `registrationEndDate` in `src/lib/config.ts`. The same date drives the countdown and the server action, which rejects submissions once it has passed. To reopen registration, move the date into the future.
 
 ## CI
 

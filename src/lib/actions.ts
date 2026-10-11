@@ -1,101 +1,91 @@
 "use server";
 
-import z from "zod";
+import { isRegistrationOpen } from "./config";
 import { prisma } from "./prisma";
-import { registrationSchema } from "./schemas";
+import { RegistrationSchema, registrationSchema } from "./schemas";
 
 // Server actions return errors instead of throwing them: in production React
 // replaces a thrown error's message with a generic one before it reaches the client.
 type SubmitResult = { error: string } | undefined
 
-export async function submitRegistrationForm(
-  _data: z.infer<typeof registrationSchema>
-): Promise<SubmitResult> {
-  return { error: "Oops! It seems you've come a bit late to the party.\nRegistration is closed now." };
-}
+// Discord rejects embeds whose description is longer than this
+const DISCORD_DESCRIPTION_LIMIT = 4096;
 
-export async function submitRegistrationFormOld(
-  data: z.infer<typeof registrationSchema>
-): Promise<SubmitResult> {
+export async function submitRegistrationForm(data: RegistrationSchema): Promise<SubmitResult> {
+  if (!isRegistrationOpen())
+    return { error: "Oops! It seems you've come a bit late to the party.\nRegistration is closed now." };
+
+  const parsed = registrationSchema.safeParse(data);
+  if (!parsed.success)
+    return { error: "Some of your answers are invalid. Please go back and check them." };
+
   try {
-    const validatedData = registrationSchema.parse(data);
-
-    const {
-      firstName,
-      lastName,
-      email,
-      phone,
-      birthDate,
-      discord,
-      enrollmentYear,
-      institution,
-      matricule,
-      major,
-      teamName,
-      availability,
-      prevExperience,
-      prevExperienceDetails,
-      motivation,
-      skills,
-      github,
-      linkedin,
-      portfolio,
-      behance
-    } = validatedData;
-
-    if (!process.env.DISCORD_WEBHOOK_URL)
-      throw new Error("Discord webhook URL is not set.");
-
-    await prisma.submission.create({
-      data: validatedData,
-    });
-
-    await fetch(process.env.DISCORD_WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        embeds: [
-          {
-            title: "New Registration Form Submission",
-            color: 3447003,
-            description: `
-### 👤 Personal Information
-- **First Name:** ${firstName}
-- **Last Name:** ${lastName}
-- **Email:** ${email}
-- **Phone:** ${phone}
-- **Birth Date:** ${birthDate}
-- **Discord username:** ${discord}
-
-### 🎓 Academic Information
-- **Enrollment Year:** ${enrollmentYear}
-- **Institution:** ${institution}
-- **Matricule:** ${matricule}
-- **Major:** ${major}
-
-### 🧠 Hackathon Information
-- **Team Name:** ${teamName}
-- **Availability:** ${availability}
-- **Previous Experience:** ${prevExperience}
-- **Previous Experience Details:** ${prevExperienceDetails || "N/A"}
-- **Motivation:** ${motivation}
-- **Skills:** ${skills}
-
-### 🌐 Social Media Links
-- **GitHub:** ${github || "N/A"}
-- **LinkedIn:** ${linkedin || "N/A"}
-- **Portfolio:** ${portfolio || "N/A"}
-- **Behance:** ${behance || "N/A"}
-    `.trim(),
-            timestamp: new Date().toISOString(),
-          }
-        ],
-      }),
-    });
+    await prisma.submission.create({ data: parsed.data });
   } catch (error) {
-    console.error("Error submitting registration form:", error);
+    console.error("Error saving registration:", error);
     return { error: "Something went wrong while submitting your registration. Please try again." };
   }
+
+  // The registration is saved at this point, so a failed notification is only logged:
+  // returning an error would make the user submit again and register twice.
+  try {
+    await notifyDiscord(parsed.data);
+  } catch (error) {
+    console.error("Error sending registration to Discord:", error);
+  }
+}
+
+async function notifyDiscord(data: RegistrationSchema) {
+  if (!process.env.DISCORD_WEBHOOK_URL)
+    throw new Error("Discord webhook URL is not set.");
+
+  const description = `
+### 👤 Personal Information
+- **First Name:** ${data.firstName}
+- **Last Name:** ${data.lastName}
+- **Email:** ${data.email}
+- **Phone:** ${data.phone}
+- **Birth Date:** ${data.birthDate}
+- **Discord username:** ${data.discord}
+
+### 🎓 Academic Information
+- **Enrollment Year:** ${data.enrollmentYear}
+- **Institution:** ${data.institution}
+- **Matricule:** ${data.matricule}
+- **Major:** ${data.major}
+
+### 🧠 Hackathon Information
+- **Team Name:** ${data.teamName}
+- **Availability:** ${data.availability}
+- **Previous Experience:** ${data.prevExperience}
+- **Previous Experience Details:** ${data.prevExperienceDetails || "N/A"}
+- **Motivation:** ${data.motivation}
+- **Skills:** ${data.skills}
+
+### 🌐 Social Media Links
+- **GitHub:** ${data.github || "N/A"}
+- **LinkedIn:** ${data.linkedin || "N/A"}
+- **Portfolio:** ${data.portfolio || "N/A"}
+- **Behance:** ${data.behance || "N/A"}
+`.trim();
+
+  const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      embeds: [
+        {
+          title: "New Registration Form Submission",
+          color: 3447003,
+          description: description.slice(0, DISCORD_DESCRIPTION_LIMIT),
+          timestamp: new Date().toISOString(),
+        }
+      ],
+    }),
+  });
+
+  if (!response.ok)
+    throw new Error(`Discord responded with ${response.status}: ${await response.text()}`);
 }
