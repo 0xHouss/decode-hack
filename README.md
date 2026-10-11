@@ -50,6 +50,7 @@ Built with Next.js 16 (App Router), React 19, Tailwind CSS 4, and Prisma 7 on Po
 | `pnpm build` | Build for production |
 | `pnpm start` | Serve the production build |
 | `pnpm lint` | Run ESLint |
+| `pnpm test` | Run the unit tests with Vitest |
 | `pnpm export` | Export all registrations to `export.csv` |
 
 ## Database
@@ -73,4 +74,4 @@ Registration closes at `registrationEndDate` in `src/lib/config.ts`. The same da
 
 ## CI
 
-GitHub Actions (`.github/workflows/ci.yml`) runs `pnpm lint` and `pnpm build` on every push to `main` and on every pull request.
+GitHub Actions (`.github/workflows/ci.yml`) runs `pnpm lint`, `pnpm test` and `pnpm build` on every push to `main` and on every pull request.
