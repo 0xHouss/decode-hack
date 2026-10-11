@@ -20,7 +20,7 @@ export default function PersonalForm() {
             name="firstName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What&apos;s your first name?</FormLabel>
+                <FormLabel className="text-cream">What&apos;s your first name?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<UserIcon className="h-5 w-5" />} placeholder="First name" {...field} />
                 </FormControl>
@@ -34,7 +34,7 @@ export default function PersonalForm() {
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What&apos;s your last name?</FormLabel>
+                <FormLabel className="text-cream">What&apos;s your last name?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<UserIcon className="h-5 w-5" />} placeholder="Last name" {...field} />
                 </FormControl>
@@ -48,7 +48,7 @@ export default function PersonalForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What&apos;s your email?</FormLabel>
+                <FormLabel className="text-cream">What&apos;s your email?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<MailIcon className="h-5 w-5" />} placeholder="Email" {...field} />
                 </FormControl>
@@ -62,7 +62,7 @@ export default function PersonalForm() {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What&apos;s your phone number?</FormLabel>
+                <FormLabel className="text-cream">What&apos;s your phone number?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<PhoneIcon className="h-5 w-5" />} placeholder="Phone number" {...field} />
                 </FormControl>
@@ -76,7 +76,7 @@ export default function PersonalForm() {
             name="birthDate"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What&apos;s your birth date?</FormLabel>
+                <FormLabel className="text-cream">What&apos;s your birth date?</FormLabel>
                 <FormControl>
                   <DatePicker {...field} />
                 </FormControl>
@@ -90,7 +90,7 @@ export default function PersonalForm() {
             name="discord"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What&apos;s your Discord username?</FormLabel>
+                <FormLabel className="text-cream">What&apos;s your Discord username?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<Discord className="h-5 w-5" />} placeholder="Discord username" {...field} />
                 </FormControl>

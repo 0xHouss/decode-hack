@@ -18,7 +18,7 @@ export default function AcademicForm() {
             name="institution"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">Where did/do you study?</FormLabel>
+                <FormLabel className="text-cream">Where did/do you study?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<SchoolIcon className="h-5 w-5" />} placeholder="Institution" {...field} />
                 </FormControl>
@@ -32,7 +32,7 @@ export default function AcademicForm() {
             name="enrollmentYear"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">When did you enroll?</FormLabel>
+                <FormLabel className="text-cream">When did you enroll?</FormLabel>
                 <FormControl>
                   <CustomInput
                     icon={<CalendarIcon className="h-5 w-5" />}
@@ -50,7 +50,7 @@ export default function AcademicForm() {
             name="matricule"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What is your Matricule?</FormLabel>
+                <FormLabel className="text-cream">What is your Matricule?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<HashIcon className="h-5 w-5" />} placeholder="Matricule" {...field} />
                 </FormControl>
@@ -64,7 +64,7 @@ export default function AcademicForm() {
             name="major"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What is your major?</FormLabel>
+                <FormLabel className="text-cream">What is your major?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<GraduationCapIcon className="h-5 w-5" />} placeholder="Field of Study" {...field} />
                 </FormControl>

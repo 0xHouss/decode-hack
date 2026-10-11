@@ -49,7 +49,7 @@ export default function ExtraForm() {
             name="motivation"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What motivates you to participate?</FormLabel>
+                <FormLabel className="text-cream">What motivates you to participate?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<FlameIcon className="h-5 w-5" />} placeholder="Motivation" {...field} />
                 </FormControl>
@@ -63,7 +63,7 @@ export default function ExtraForm() {
             name="skills"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What are your skills?</FormLabel>
+                <FormLabel className="text-cream">What are your skills?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<HammerIcon className="h-5 w-5" />} placeholder="Skills (comma separated)" {...field} />
                 </FormControl>
@@ -80,7 +80,7 @@ export default function ExtraForm() {
                 name={platform.name}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#F0FFD1]">{platform.label} (optional)</FormLabel>
+                    <FormLabel className="text-cream">{platform.label} (optional)</FormLabel>
                     <FormControl>
                       <CustomInput icon={platform.icon} placeholder={`Your ${platform.label} URL`} {...field} />
                     </FormControl>

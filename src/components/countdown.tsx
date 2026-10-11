@@ -38,7 +38,7 @@ export default function Countdown({ className }: CondownProps) {
 
   return (
     <div className={cn("space-y-4", className)}>
-      <h2 className="text-2xl bg-gradient-to-r from-[#E9FDB0] to-[#4E941A] bg-clip-text text-transparent">
+      <h2 className="text-2xl bg-gradient-to-r from-pistachio to-leaf bg-clip-text text-transparent">
         Registrations ends in :
       </h2>
 

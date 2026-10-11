@@ -7,6 +7,7 @@ import "./globals.css";
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
+  variable: "--font-poppins",
 });
 
 const title = "Decode Hack";
@@ -36,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth max-w-screen overflow-x-clip" suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} scroll-smooth max-w-screen overflow-x-clip`} suppressHydrationWarning>
       <head>
         {/* Mark the splash screen as seen before first paint, so it doesn't flash on repeat visits */}
         <script
@@ -45,7 +46,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${poppins.className} scroll-smooth antialiased flex flex-col items-center w-screen overflow-x-hidden relative min-h-screen`}>
+      <body className={`scroll-smooth antialiased flex flex-col items-center w-screen overflow-x-hidden relative min-h-screen`}>
         <Header />
 
         <div className="absolute top-0 left-0 right-0 h-screen z-10 bg-size-[800px] pointer-events-none" style={{
@@ -65,11 +66,11 @@ export default function RootLayout({
         />
 
         <div className="absolute top-0 left-0 right-0 h-screen overflow-clip">
-          <div className="absolute top-35 lg:top-45 rounded-t-full left-1/2 -translate-x-1/2 w-[150svw] lg:w-[130svw] aspect-square bg-gradient-to-r from-[#5D9535]/0 via-[#C3E956] to-[#5D9535]/0  pt-[2px]">
+          <div className="absolute top-35 lg:top-45 rounded-t-full left-1/2 -translate-x-1/2 w-[150svw] lg:w-[130svw] aspect-square bg-gradient-to-r from-moss/0 via-chartreuse to-moss/0  pt-[2px]">
             <div className="relative bg-background rounded-t-full w-full h-full overflow-hidden">
-              <div className="absolute left-0 right-0 top-0 bottom-0 rounded-t-full bg-gradient-to-b from-[#4E941A]/50 via-background to-background" />
+              <div className="absolute left-0 right-0 top-0 bottom-0 rounded-t-full bg-gradient-to-b from-leaf/50 via-background to-background" />
             </div>
-            <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[50px] bg-[#D8FEE5]/50 rounded-full blur-[100px] z-0" />
+            <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[50px] bg-frost/50 rounded-full blur-[100px] z-0" />
           </div>
         </div>
 

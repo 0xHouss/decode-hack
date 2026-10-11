@@ -23,7 +23,7 @@ export default function HackathonForm() {
             name="teamName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#F0FFD1]">What is your team name?</FormLabel>
+                <FormLabel className="text-cream">What is your team name?</FormLabel>
                 <FormControl>
                   <CustomInput icon={<UsersIcon className="h-5 w-5" />} placeholder="Team name" {...field} />
                 </FormControl>
@@ -36,9 +36,9 @@ export default function HackathonForm() {
             control={form.control}
             name="availability"
             render={({ field }) => (
-              <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
-                <FormItem className="space-y-2 bg-[#050B08] p-4 rounded-2xl">
-                  <FormLabel className="text-[#F0FFD1] text-wrap">Will you be available from July 31st to August 3rd?</FormLabel>
+              <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
+                <FormItem className="space-y-2 bg-night-900 p-4 rounded-2xl">
+                  <FormLabel className="text-cream text-wrap">Will you be available from July 31st to August 3rd?</FormLabel>
                   <FormControl>
                     <RadioGroup name={field.name} value={field.value} onValueChange={field.onChange} className="flex flex-col space-y-2">
                       <div className="flex items-center space-x-2">
@@ -61,9 +61,9 @@ export default function HackathonForm() {
             control={form.control}
             name="prevExperience"
             render={({ field }) => (
-              <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
-                <FormItem className="space-y-2 bg-[#050B08] p-4 rounded-2xl">
-                  <FormLabel className="text-[#F0FFD1] text-wrap">Do you have any experience in hackathons?</FormLabel>
+              <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
+                <FormItem className="space-y-2 bg-night-900 p-4 rounded-2xl">
+                  <FormLabel className="text-cream text-wrap">Do you have any experience in hackathons?</FormLabel>
                   <FormControl>
                     <RadioGroup
                       name={field.name}
@@ -97,12 +97,12 @@ export default function HackathonForm() {
               name="prevExperienceDetails"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[#F0FFD1]">Which ones?</FormLabel>
+                  <FormLabel className="text-cream">Which ones?</FormLabel>
                   <FormControl>
-                    <div className="relative bg-gradient-to-b from-[#398B56] to-[#17271D] h-fit p-px rounded-2xl">
+                    <div className="relative bg-gradient-to-b from-fern to-night-600 h-fit p-px rounded-2xl">
                       <Textarea
                         placeholder="Hackathons you took part in"
-                        className="rounded-2xl border-0 bg-[#050B08] dark:bg-[#050B08] placeholder:text-[#F0FFD1]/50"
+                        className="rounded-2xl border-0 bg-night-900 dark:bg-night-900 placeholder:text-cream/50"
                         {...field} />
                     </div>
                   </FormControl>
