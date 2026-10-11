@@ -40,10 +40,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} scroll-smooth max-w-screen overflow-x-clip`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        {/* Mark the splash screen as seen before first paint, so it doesn't flash on repeat visits */}
+        {/* Mark the splash screen as seen before first paint, so it doesn't flash on repeat
+            visits. Visitors who prefer reduced motion skip it: it's only an animation, and
+            lottie-react doesn't autoplay for them, so it would never finish. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(sessionStorage.getItem("splash-seen"))document.documentElement.setAttribute("data-splash-seen","")}catch(e){}`,
+            __html: `try{if(sessionStorage.getItem("splash-seen")||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.setAttribute("data-splash-seen","")}catch(e){}`,
           }}
         />
       </head>
