@@ -89,7 +89,7 @@
 }
 /* Splash screen: lock scrolling while it is shown, and hide it before
    hydration when it has already played this session (see layout.tsx). */
-html:not([data-splash-seen]) body:has([data-splash]) {
+html:not([data-splash-seen]):has([data-splash]) {
   overflow: hidden;
 }
 
