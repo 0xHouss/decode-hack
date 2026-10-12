@@ -81,8 +81,10 @@ export default function RootLayout({
         </div>
 
         {/* The page itself, in normal flow so the window scrolls. The layers above are decoration.
-            It clips sideways overflow, like full-width sections and content sliding in on reveal. */}
-        <div className="relative z-40 w-full pt-55 lg:pt-65 overflow-x-clip">
+            It clips sideways overflow, like full-width sections and content sliding in on reveal.
+            It's offset with a margin, not padding: it stacks above the header, so its box must
+            start below it or it would catch the header's clicks. */}
+        <div className="relative z-40 w-full mt-55 lg:mt-65 overflow-x-clip">
           {children}
         </div>
       </body>
